@@ -18,4 +18,4 @@ console.log(aluno2)
 // aluno1.newDisciplina("Fis", 20, "Mat")
 
 // console.log(aluno1)
-// console.log(aluno1.allDisciplinas)
+// console.log(aluno1.allDisciplinasInscritas)
