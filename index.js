@@ -1,6 +1,6 @@
 // const Aluno = require("./Aluno")
 const Disciplina = require("./Disciplina")
-const FactoryAluno = require("./FactoryAluno")
+const FactoryAluno = require("./ModelAluno/FactoryAluno")
 
 // const aluno1 = new Aluno("Matheus", 14000, 123, 2019, "Ativo")
 const disciplina1 = new Disciplina("Mat", 14, "Mat")

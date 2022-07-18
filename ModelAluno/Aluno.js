@@ -1,5 +1,5 @@
-var Disciplina = require("./Disciplina")
-var IAluno = require("./Controllers/InterfaceAluno")
+var Disciplina = require("../Disciplina")
+var IAluno = require("./InterfaceAluno")
 
 module.exports = class Aluno extends IAluno{
     //propriedades e funções da classe Aluno
