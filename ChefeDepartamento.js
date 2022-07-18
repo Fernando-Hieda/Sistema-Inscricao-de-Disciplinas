@@ -1,8 +1,8 @@
-module.exports = class Disciplina {
+const Disciplina = require("./Disciplina")
+
+module.exports = class ChefeDepartamento {
     //propriedades e funções da classe
-    constructor(nome, vagas, curso) {
+    constructor(nome) {
         this.nome = nome
-        this.vagas = vagas
-        this.curso = curso
     }
 }
