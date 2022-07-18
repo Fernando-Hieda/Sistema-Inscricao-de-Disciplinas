@@ -1,7 +1,5 @@
-const Aluno = require("../Aluno");
+const IAluno = require("../InterfaceAluno")
 
 module.exports = class Controller {
-    //propriedades e funções da classe
-    constructor() {
-    }
+    //funcionalidades da classe Aluno
 }
