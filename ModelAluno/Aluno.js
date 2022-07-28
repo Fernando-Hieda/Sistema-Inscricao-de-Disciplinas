@@ -1,4 +1,4 @@
-var Disciplina = require("../Disciplina")
+var Disciplina = require("../ModelDisciplina/Disciplina")
 var IAluno = require("./InterfaceAluno")
 
 module.exports = class Aluno extends IAluno{
@@ -10,12 +10,12 @@ module.exports = class Aluno extends IAluno{
         this.id = id
         this.perfil = perfil
         this.statusMatricula = statusMatricula
-        this.disciplinas = []
+        this.disciplinasInscritas = []
     }
 
     newDisciplina(nome, vagas, curso) {
         let d = new Disciplina(nome, vagas, curso)
-        this.disciplinas.push(d)
+        this.disciplinasInscritas.push(d)
         return d
     }
 
