@@ -15,8 +15,8 @@ console.log(disciplina1)
 // console.log(disciplina2)
 console.log(aluno2)
 
-aluno2.newDisciplina(disciplina1)
-aluno2.newDisciplina(disciplina2)
+aluno2.newDisciplina(disciplina1.nome)
+aluno2.newDisciplina(disciplina2.nome)
 
 // console.log(aluno1)
 console.log(aluno2.allDisciplinasInscritas)
