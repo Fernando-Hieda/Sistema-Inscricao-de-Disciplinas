@@ -13,8 +13,8 @@ module.exports = class Aluno extends IAluno{
         this.disciplinas = []
     }
 
-    newDisciplina(nome, vagas, curso) {
-        let d = new Disciplina(nome, vagas, curso)
+    newDisciplina(Disciplina) {
+        let d = Disciplina
         this.disciplinas.push(d)
         return d
     }
