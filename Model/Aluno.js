@@ -1,4 +1,4 @@
-var Disciplina = require("../Disciplina")
+var Disciplina = require("./Disciplina")
 var IAluno = require("./InterfaceAluno")
 
 module.exports = class Aluno extends IAluno{

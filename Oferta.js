@@ -1,4 +1,4 @@
-var Disciplina = require("../Disciplina")
+var Disciplina = require("./Model/Disciplina")
 
 module.exports = class Oferta {
     //propriedades e funções da classe 
