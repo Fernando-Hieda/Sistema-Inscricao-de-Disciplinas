@@ -19,7 +19,7 @@ module.exports = class Aluno extends IAluno{
         return d
     }
 
-    get allDisciplinasInscritas() {
+    getAllDisciplinasInscritas() {
         return this.disciplinas
     }
 }

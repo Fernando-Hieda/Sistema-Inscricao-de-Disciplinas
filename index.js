@@ -5,6 +5,7 @@ const app = express();
 
 const ControllerAluno = require("./Controllers/AlunoController")
 const ControleAluno = new ControllerAluno
+const FactoryDisciplina = require("./Model/FactoryDisciplina")
 
 const bodyParser = require('body-parser');
 app.use(bodyParser.json());
@@ -14,9 +15,19 @@ app.get('/', (req, res, next) => {
 })
  
 app.get('/clientes', (req, res, next) => { 
-    console.log("Retornou todos clientes!");
+    console.log("Retornou todos alunos!");
+    var alunos = []
+
     aluno = ControleAluno.criaAluno("Matheus", 14000, 123, 2019, "Ativo")
-    res.json([aluno]);
+    alunos.push(aluno)
+    aluno = ControleAluno.criaAluno("Vitor", 12000, 321, 2020, "Ativo")
+    alunos.push(aluno)
+    
+    const FDisciplina = new FactoryDisciplina
+    const disciplina1 = FDisciplina.criaDisciplina("Mat", 14, "Mat")
+    aluno.newDisciplina(disciplina1.nome)
+
+    res.json([alunos, aluno, aluno.getAllDisciplinasInscritas()])
 }) 
  
 const server = http.createServer(app); 
