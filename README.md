@@ -1,5 +1,8 @@
 # Sistema-Inscricao-de-Disciplinas
 Requisitos:
+ 
+ # Clone este repositório
+ $ git clone <https://github.com/Igashe/Sistema-Inscricao-de-Disciplinas/>
 
  # Instalar node:
  https://nodejs.org/en/download/
