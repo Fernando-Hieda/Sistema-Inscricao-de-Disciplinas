@@ -1,0 +1,23 @@
+{
+  "name": "Sistema_Inscricao_Disciplinas",
+  "version": "1.0.0",
+  "description": "Requisitos:",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Igashe/Sistema-Inscricao-de-Disciplinas.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Igashe/Sistema-Inscricao-de-Disciplinas/issues"
+  },
+  "homepage": "https://github.com/Igashe/Sistema-Inscricao-de-Disciplinas#readme",
+  "dependencies": {
+    "body-parser": "^1.20.0",
+    "express": "^4.18.1"
+  }
+}
