@@ -14,7 +14,7 @@ app.get('/', (req, res, next) => {
     res.json({message: "Tudo ok por aqui!"});
 })
  
-app.get('/clientes', (req, res, next) => { 
+app.get('/alunos', (req, res, next) => { 
     console.log("Retornou todos alunos!");
     var alunos = []
 
