@@ -1,34 +1,28 @@
 # Sistema-Inscricao-de-Disciplinas
 Requisitos:
 
- Instalar node:
+ # Instalar node:
  https://nodejs.org/en/download/
 
- Assuming you’ve already installed Node.js, create a directory to hold your application, and make that your working directory.
+ Assumindo que você já instalou Node.js, crie um diretório para a sua aplicação,
+ e faça esse repositório como seu diretório de trabalho.
 
  $ mkdir myapp
 
  $ cd myapp
 
-
- Use the npm init command to create a package.json file for your application
-
+ # Use o comando "npm init" para criar um arquivo pacote .json para a sua aplicação
  $ npm init
+ 
+ Pressione a tecla "Enter" até voce encontrar uma mensagem escrita "Is this Ok? (yes)" e pressione "Enter"
 
-
- Press "Enter" until you got a message like "Is this Ok? (yes) and press the 
- last "Enter"
-
- Now install Express in the myapp directory and save it in the dependencies list. For example:
+ # Agore instale o Express no diretório "myapp" e salve ele na lista de dependências. Por exemlo:
 
  $ npm install express
 
- 
- Instalar express body-parser:
-
+ # Instalar express body-parser:
  $ npm i express body-parser
- 
 
- Adicionando o JWT:
 
+ # Adicionando o JWT:
  $ npm i jsonwebtoken dotenv-safe
