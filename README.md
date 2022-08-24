@@ -16,3 +16,6 @@ Requisitos:
  
  Instalar express body-parser:
  $ npm i express body-parser
+
+ Adicionando o JWT:
+ $ npm i jsonwebtoken dotenv-safe
