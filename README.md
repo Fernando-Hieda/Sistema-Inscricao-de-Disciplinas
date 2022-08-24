@@ -10,9 +10,11 @@ Requisitos:
 
  $ cd myapp
 
+
  Use the npm init command to create a package.json file for your application
 
  $ npm init
+
 
  Press "Enter" until you got a message like "Is this Ok? (yes) and press the 
  last "Enter"
@@ -20,11 +22,13 @@ Requisitos:
  Now install Express in the myapp directory and save it in the dependencies list. For example:
 
  $ npm install express
+
  
  Instalar express body-parser:
 
  $ npm i express body-parser
+ 
 
  Adicionando o JWT:
- 
+
  $ npm i jsonwebtoken dotenv-safe
