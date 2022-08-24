@@ -2,7 +2,10 @@
 const http = require('http'); 
 const express = require('express'); 
 const app = express(); 
- 
+
+const ControllerAluno = require("./Controllers/AlunoController")
+const ControleAluno = new ControllerAluno
+
 const bodyParser = require('body-parser');
 app.use(bodyParser.json());
  
@@ -12,7 +15,8 @@ app.get('/', (req, res, next) => {
  
 app.get('/clientes', (req, res, next) => { 
     console.log("Retornou todos clientes!");
-    res.json([{id:1,nome:'luiz'}]);
+    aluno = ControleAluno.criaAluno("Matheus", 14000, 123, 2019, "Ativo")
+    res.json([aluno]);
 }) 
  
 const server = http.createServer(app); 
