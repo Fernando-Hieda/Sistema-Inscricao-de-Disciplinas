@@ -27,3 +27,6 @@
 
  # Adicionando o JWT:
  $ npm i jsonwebtoken dotenv-safe
+
+ # Para rodar o programa:
+ $ node index.js
