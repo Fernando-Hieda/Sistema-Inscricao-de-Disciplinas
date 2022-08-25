@@ -1,4 +1,3 @@
-
 var Disciplina = require("./Disciplina")
 var IAluno = require("./InterfaceAluno")
 
@@ -16,7 +15,7 @@ module.exports = class Aluno extends IAluno{
 
     newDisciplina(Disciplina) {
         let d = Disciplina
-        this.disciplinas.push(d)
+        this.disciplinasInscritas.push(d)
         return d
     }
 

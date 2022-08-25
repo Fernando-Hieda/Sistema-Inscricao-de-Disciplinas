@@ -14,10 +14,10 @@ app.get('/', (req, res, next) => {
     res.json({message: "Tudo ok por aqui!"});
 })
  
-app.get('/clientes', (req, res, next) => { 
+app.get('/alunos', (req, res, next) => { 
     console.log("Retornou todos alunos!");
     var alunos = []
-
+    var aluno
     aluno = ControleAluno.criaAluno("Matheus", 14000, 123, 2019, "Ativo")
     alunos.push(aluno)
     aluno = ControleAluno.criaAluno("Vitor", 12000, 321, 2020, "Ativo")
