@@ -1,20 +1,16 @@
-const InterfaceAluno = require("../ModelAluno/InterfaceAluno")
-const FactoryAluno = require("../ModelAluno/FactoryAluno")
+const IAluno = require("../Model/InterfaceAluno")
+const FactoryAluno = require("../Model/FactoryAluno")
 
-const FaAluno = new FactoryAluno
-const IAluno = new InterfaceAluno
-
-module.exports = class ControllerAluno {
+module.exports = class ControllerAluno extends IAluno{
     //funcionalidades da classe Aluno
-    createAluno(nome, ira, id, perfil, statusMatricula) {
-        var aluno = FaAluno.criaAluno(nome, ira, id, perfil, statusMatricula)
-        return aluno
+    FAluno = new FactoryAluno
+    IAluno = new IAluno
+    
+    criaAluno(nome, ira, id, perfil, statusMatricula) {
+        return this.FAluno.criaAluno(nome, ira, id, perfil, statusMatricula)
     }
-
-    inscricaoDisciplina(nome, vagas, curso)
-
-    allDisciplinasInscritas(id) {
-        var aluno = FactoryAluno.createAluno(id)
-        return aluno.allDisciplinasInscritas
+    
+    getAllDisciplinasInscritas(id){
+        return this.IAluno.getAllDisciplinasInscritas(id)
     }
 }

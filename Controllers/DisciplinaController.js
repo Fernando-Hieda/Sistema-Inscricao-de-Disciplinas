@@ -1,5 +1,5 @@
-const IDisciplina= require("../ModelDisciplina/InterfaceDisciplina")
-const FactoryDisciplina= require("../ModelDisciplina/FactoryDisciplina")
+const IDisciplina= require("../Model/InterfaceDisciplina")
+const FactoryDisciplina= require("../Model/FactoryDisciplina")
 
 module.exports = class Controller {
     //funcionalidades da classe Disciplina
