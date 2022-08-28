@@ -15,15 +15,19 @@ $ cd myapp
 
 # Entre no diretório "frontend" e instale a aplicação frontend e suas bibliotecas na máquina local:
 $ cd frontend
+
 $ npm i
 
 # E agora crie um outro terminal e faça o mesmo com o diretório "backend":
 $ cd backend
+
 $ npm i
 
 # Para rodar o programa:
 Em um terminal enquanto estiver dentro do diretório "frontend" use o comando:
+
 $ npm start
 
 E faça o mesmo em outro terminal utilizando o diretório "backend":
+
 $ npm start
