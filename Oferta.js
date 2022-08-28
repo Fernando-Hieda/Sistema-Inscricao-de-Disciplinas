@@ -1,14 +1,24 @@
+const IOferta = require("./InterfaceOferta")
 var Disciplina = require("./Model/Disciplina")
+var Aluno = require("./Model/Aluno")
 
-module.exports = class Oferta {
+module.exports = class Oferta extends IOferta {
     //propriedades e funções da classe 
-    constructor() {
-        this.disciplinas = []
+    constructor(disciplina, professor, vagas, alunos) {
+        this.disciplina = disciplina
+        this.professor = professor
+        this.vagas = vagas
+        this.alunos = []
     }
 
-    newDisciplina(nome, vagas, curso) {
-        let d = new Disciplina(nome, vagas, curso)
-        this.disciplinas.push(d)
-        return d
+    newAluno(nome, ira, id, perfil, statusMatricula) {
+        let a = new Aluno(nome, ira, id, perfil, statusMatricula)
+        this.alunos.push(d)
+        return a
     }
+
+    get alunosDeferidos(){
+        return this.alunos
+    }
+
 }
