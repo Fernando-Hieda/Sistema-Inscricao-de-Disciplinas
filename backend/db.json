@@ -1,0 +1,18 @@
+{
+  "alunos": [
+    {
+      "id": 1,
+      "nome": "Arthur Oliveira",
+      "ira": 8000,
+      "perfil": 2020,
+      "statusMatricula": "Ativo"
+    },
+    {
+      "id": 2,
+      "nome": "Gabriel Silva",
+      "ira": 9000,
+      "perfil": 2010,
+      "statusMatricula": "Formado"
+    }
+  ]
+}
