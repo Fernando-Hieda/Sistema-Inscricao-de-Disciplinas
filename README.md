@@ -17,11 +17,11 @@ $ cd myapp
 $ cd frontend
 $ npm i
 
-#E agora crie um outro terminal e faça o mesmo com o diretório "backend":
+# E agora crie um outro terminal e faça o mesmo com o diretório "backend":
 $ cd backend
 $ npm i
 
-#Para rodar o programa:
+# Para rodar o programa:
 Em um terminal enquanto estiver dentro do diretório "frontend" use o comando:
 $ npm start
 
