@@ -20,9 +20,9 @@ app.use(function(req, res, next) {
     next();
 });
 
-app.get('/alunos', (req, res, next) => { 
-    console.log("Retornou todos alunos!");
+app.get('/alunos', (req, res, next) => {
     var alunos = []
+    console.log("Retornou todos alunos!");
 
     aluno = ControleAluno.criaAluno("Matheus", 14000, 123, 2019, "Ativo")
     alunos.push(aluno)
@@ -36,7 +36,19 @@ app.get('/alunos', (req, res, next) => {
     res.json(alunos)
     // res.json([alunos, aluno, aluno.getAllDisciplinasInscritas()])
 }) 
- 
+
+app.get('/disciplinas', (req, res, next) => { 
+    var disciplinas = []
+    console.log("Retornou todas Disciplinas!");
+    
+    const FDisciplina = new FactoryDisciplina
+    const disciplina1 = FDisciplina.criaDisciplina("Mat", 20, 2019, 14, "Mat")
+    disciplinas.push(disciplina1)
+
+    res.json(disciplinas)
+    // res.json([alunos, aluno, aluno.getAllDisciplinasInscritas()])
+}) 
+
 const server = http.createServer(app); 
 server.listen(3001);
 console.log("Servidor express escutando na porta 3001...")

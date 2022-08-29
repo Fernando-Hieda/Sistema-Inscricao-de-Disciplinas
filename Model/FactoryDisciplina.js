@@ -4,7 +4,7 @@ module.exports = class FactoryDisciplina {
     constructor(){
     
     }
-    criaDisciplina(nome, vagas) {
-        return new Disciplina(nome, vagas)
-    }    
+    criaDisciplina(nome, id, perfil, vagas) {
+        return new Disciplina(nome, id, perfil, vagas)
+    }
 }

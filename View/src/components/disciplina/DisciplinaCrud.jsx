@@ -8,9 +8,9 @@ const headerProps = {
     subtitle: 'Cadastro de Disciplinas: Incluir, Listar, Alternar e Excluir '
 }
 
-const baseUrl = 'http://localhost:3001/alunos'
+const baseUrl = 'http://localhost:3001/disciplinas'
 const initialState = {
-    disciplina: { nome: '', id: '', perfil: '', alunos: []},
+    disciplina: { nome: '', id: '', perfil: '', vagas: '', cursos: [], alunos: []},
     list: []
 }
 
@@ -25,32 +25,32 @@ export default class DisciplinaCrud extends Component {
     }
 
     clear() {
-        this.setState({ user: initialState.user })
+        this.setState({ disciplina: initialState.disciplina })
     }
 
     save() {
-        const user = this.state.user
-        const method = user.id ? 'put' : 'post' //put:edita e post:cria
-        const url = user.id ? `${baseUrl}/${user.id}` : baseUrl
-        axios[method](url, user)
+        const disciplina = this.state.disciplina
+        const method = disciplina.id ? 'put' : 'post' //put:edita e post:cria
+        const url = disciplina.id ? `${baseUrl}/${disciplina.id}` : baseUrl
+        axios[method](url, disciplina)
             .then(resp => {
                 const list = this.getUpdatedList(resp.data)
-                this.setState({ user: initialState.user, list })
+                this.setState({ disciplina: initialState.disciplina, list })
             })
     }
 
-    getUpdatedList(user, add = true) {
+    getUpdatedList(disciplina, add = true) {
         //reinsere o usuario na primeira posição do array
-        const list = this.state.list.filter(u => u.id !== user.id)
+        const list = this.state.list.filter(u => u.id !== disciplina.id)
         if(add)
-            list.unshift(user)
+            list.unshift(disciplina)
         return list
     }
 
     updateField(event) {
-        const user = { ...this.state.user }
-        user[event.target.nome] = event.target.value
-        this.setState({ user })
+        const disciplina = { ...this.state.disciplina }
+        disciplina[event.target.nome] = event.target.value
+        this.setState({ disciplina })
     }
 
     renderForm() {
@@ -98,13 +98,13 @@ export default class DisciplinaCrud extends Component {
         )
     }
 
-    load(user) {
-        this.setState({ user })
+    load(disciplina) {
+        this.setState({ disciplina })
     }
 
-    remove(user) {
-        axios.delete(`${baseUrl}/${user.id}`).then(resp => {
-            const list = this.getUpdatedList(user, false)
+    remove(disciplina) {
+        axios.delete(`${baseUrl}/${disciplina.id}`).then(resp => {
+            const list = this.getUpdatedList(disciplina, false)
             this.setState({ list })
         })
     }
@@ -116,10 +116,10 @@ export default class DisciplinaCrud extends Component {
                     <tr>
                         <th>Id</th>
                         <th>Nome</th>
-                        <th>Ira</th>
                         <th>Perfil</th>
-                        <th>Status de Mátricula</th>
-                        <th>Disciplinas Inscritas</th>
+                        <th>Vagas</th>
+                        <th>Cursos</th>
+                        <th>Alunos Inscritos</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -130,22 +130,22 @@ export default class DisciplinaCrud extends Component {
     }
 
     renderRows() {
-        return this.state.list.map(user => {
+        return this.state.list.map(disciplina => {
             return (
-                <tr key={user.id}>
-                    <td>{user.id}</td>
-                    <td>{user.nome}</td>
-                    <td>{user.ira}</td>
-                    <td>{user.perfil}</td>
-                    <td>{user.statusMatricula}</td>
-                    <td>{user.disciplinas}</td>
+                <tr key={disciplina.id}>
+                    <td>{disciplina.id}</td>
+                    <td>{disciplina.nome}</td>
+                    <td>{disciplina.perfil}</td>
+                    <td>{disciplina.vagas}</td>
+                    <td>{disciplina.cursos}</td>
+                    <td>{disciplina.alunos}</td>
                     <td>
                         <button className="btn btn-warning"
-                            onClick={() => this.load(user)}>
+                            onClick={() => this.load(disciplina)}>
                             <i className="fa fa-pencil"></i>
                         </button>
                         <button className="btn btn-danger ml-2"
-                            onClick={() => this.remove(user)}>
+                            onClick={() => this.remove(disciplina)}>
                             <i className="fa fa-trash"></i>
                         </button>
                     </td>
