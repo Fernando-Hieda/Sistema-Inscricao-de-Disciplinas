@@ -2,34 +2,58 @@
 const http = require('http'); 
 const express = require('express'); 
 const app = express(); 
-
-const ControllerAluno = require("./Controllers/AlunoController")
-const ControleAluno = new ControllerAluno
-const FactoryDisciplina = require("./Model/FactoryDisciplina")
-
 const bodyParser = require('body-parser');
+
 app.use(bodyParser.json());
  
 app.get('/', (req, res, next) => {
     res.json({message: "Tudo ok por aqui!"});
 })
- 
+
+const ControllerAluno = require("./Controllers/AlunoController")
+const ControleAluno = new ControllerAluno
+const FactoryDisciplina = require("./Model/FactoryDisciplina")
+const FDisciplina = new FactoryDisciplina
+
+var alunos = []
+var ofertas = []
+var disciplinas = []
+
 app.get('/alunos', (req, res, next) => { 
     console.log("Retornou todos alunos!");
-    var alunos = []
     var aluno
     aluno = ControleAluno.criaAluno("Matheus", 14000, 123, 2019, "Ativo")
     alunos.push(aluno)
     aluno = ControleAluno.criaAluno("Vitor", 12000, 321, 2020, "Ativo")
     alunos.push(aluno)
     
-    const FDisciplina = new FactoryDisciplina
     const disciplina1 = FDisciplina.criaDisciplina("Mat", 14, "Mat")
     aluno.newDisciplina(disciplina1.nome)
 
     res.json([alunos, aluno, aluno.getAllDisciplinasInscritas()])
+})
+
+app.get('/disciplinas', (req, res, next) => { 
+    console.log("Retornou todas Disicplinas!");
+    
+    const FDisciplina = new FactoryDisciplina
+    const disciplina1 = FDisciplina.criaDisciplina("Mat", 14, "Mat")
+    disciplinas.push(disciplina1)
+
+    res.json([disciplinas])
+})
+
+app.get('/ofertas', (req, res, next) => { 
+    console.log("Retornou todas Ofertas!");
+    
+    res.json([ofertas])
+})
+
+app.get('/inscricao_disciplina', (req, res, next) => { 
+    
 }) 
- 
+
+
 const server = http.createServer(app); 
 server.listen(3000);
 console.log("Servidor escutando na porta 3000...")
