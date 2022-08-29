@@ -33,7 +33,7 @@ app.get('/alunos', (req, res, next) => {
     const disciplina1 = FDisciplina.criaDisciplina("Mat", 14, "Mat")
     aluno.newDisciplina(disciplina1.nome)
 
-    res.json([aluno])
+    res.json(alunos)
     // res.json([alunos, aluno, aluno.getAllDisciplinasInscritas()])
 }) 
  
