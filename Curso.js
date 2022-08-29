@@ -3,6 +3,7 @@ var Disciplina = require("./Model/Disciplina")
 module.exports = class curso {
     //propriedades e funções da classe 
     constructor() {
+        this.nome
         this.disciplinas = []
     }
 

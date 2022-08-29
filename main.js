@@ -1,6 +1,6 @@
 // const Disciplina = require("./Disciplina")
 const ControllerAluno = require("./Controllers/AlunoController")
-const ControllerDisciplina = require("./Controllers/DisciplinaController")
+const ControllerDisciplina = require("./Controllers/OfertaController")
 
 const AlunoControl = new ControllerAluno
 const DisciplinaControl = new ControllerDisciplina

@@ -2,9 +2,8 @@ var Oferta = require("./Oferta.js")
 
 module.exports = class Periodo {
     //propriedades e funções da classe
-    constructor(semestre, ano) {
-        this.semestre = semestre
-        this.ano = ano
+    constructor(nome) {
+        this.nome
         this.ofertas = [] 
     }
 
@@ -12,5 +11,9 @@ module.exports = class Periodo {
         let o = new Oferta()
         this.ofertas.push(o)
         return o
+    }
+
+    listarOfertas() {
+        return this.ofertas
     }
 }

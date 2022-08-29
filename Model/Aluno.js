@@ -1,4 +1,4 @@
-var Disciplina = require("./Disciplina")
+var Oferta = require("./Oferta")
 var IAluno = require("./InterfaceAluno")
 
 module.exports = class Aluno extends IAluno{
@@ -13,13 +13,13 @@ module.exports = class Aluno extends IAluno{
         this.disciplinasInscritas = []
     }
 
-    newDisciplina(Disciplina) {
-        let d = Disciplina
-        this.disciplinasInscritas.push(d)
-        return d
+    newOferta(Oferta) {
+        let o = Oferta
+        this.disciplinasInscritas.push(o)
+        return o
     }
 
     getAllDisciplinasInscritas() {
-        return this.disciplinas
+        return this.disciplinasInscritas
     }
 }
