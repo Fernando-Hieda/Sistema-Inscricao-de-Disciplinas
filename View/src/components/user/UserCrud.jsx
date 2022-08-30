@@ -10,7 +10,7 @@ const headerProps = {
 
 const baseUrl = 'http://localhost:3001/alunos'
 const initialState = {
-    user: { nome: '', ira: '', id: '', perfil: '', statusMatricula: '', disciplinas: []},
+    user: { nome: '', ira: '', id: Number, perfil: '', statusMatricula: '', disciplinas: []},
     list: []
 }
 
@@ -70,12 +70,12 @@ export default class UserCrud extends Component {
 
                     <div className="col-12 col-md-6">
                         <div className="form-group">
-                            <label>E-mail</label>
-                            <input type="text" className="form-control" 
-                                name="email"
-                                value={this.state.user.email}
+                            <label>ID</label>
+                            <input type="number" className="form-control" 
+                                name="id"
+                                value={this.state.user.id}
                                 onChange={e => this.updateField(e)}
-                                placeholder="Digite o e-mail:"/>
+                                placeholder="Digite o ID:"/>
                         </div>
                     </div>
                 </div>

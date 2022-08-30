@@ -37,6 +37,19 @@ app.get('/alunos', (req, res, next) => {
     // res.json([alunos, aluno, aluno.getAllDisciplinasInscritas()])
 }) 
 
+app.post('/alunos', (req, res, next) => {
+    console.log("Retornou todos alunos!");
+    
+    nome = req.body.name
+    id = req.body.id
+
+    for (let i = 0; i < alunos.length(); i ++) {
+        if(alunos[i].nome = nome)
+            res.json(alunos[i])
+    }
+    // res.json([alunos, aluno, aluno.getAllDisciplinasInscritas()])
+}) 
+
 app.get('/disciplinas', (req, res, next) => { 
     var disciplinas = []
     console.log("Retornou todas Disciplinas!");
