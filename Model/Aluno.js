@@ -5,7 +5,7 @@ const oferta = new Oferta
 
 module.exports = class Aluno extends IAluno{
     //propriedades e funções da classe Aluno
-    constructor(nome, ira, id, perfil, statusMatricula, curso, disciplinasInscritas) {
+    constructor(nome, ira, id, perfil, statusMatricula, curso) {
         super()
         this.nome = nome
         this.ira = ira
@@ -16,9 +16,9 @@ module.exports = class Aluno extends IAluno{
         this.disciplinasInscritas = []
     }
 
-    newOferta() {
-        let o = Oferta
-        this.disciplinasInscritas.push(o)
+    newOferta(disciplina, professor, vagas, periodo, perfil) {
+        let o = new Oferta(disciplina, professor, vagas, periodo, perfil)
+        this.disciplinasInscritas.push(o.disciplina)
         return o
     }
 

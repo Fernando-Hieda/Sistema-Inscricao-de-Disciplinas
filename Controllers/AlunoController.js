@@ -6,10 +6,14 @@ module.exports = class ControllerAluno extends IAluno{
     FAluno = new FactoryAluno
     IAluno = new IAluno
     
-    criaAluno(nome, ira, id, perfil, statusMatricula) {
-        return this.FAluno.criaAluno(nome, ira, id, perfil, statusMatricula)
+    criaAluno(nome, ira, id, perfil, statusMatricula, curso) {
+        return this.FAluno.criaAluno(nome, ira, id, perfil, statusMatricula, curso)
     }
     
+    newOferta(disciplina, professor, vagas, periodo, perfil) {
+        return this.IAluno.newOferta(disciplina, professor, vagas, periodo, perfil)
+    }
+
     inscreverOfertaDisciplina(id) {
         return this.IAluno.inscreverOfertaDisciplina(id)
     }

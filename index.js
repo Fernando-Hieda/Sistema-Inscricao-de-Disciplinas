@@ -5,7 +5,7 @@ const app = express();
 const bodyParser = require('body-parser');
 
 app.use(bodyParser.json());
- 
+
 app.get('/', (req, res, next) => {
     res.json({message: "Tudo ok por aqui!"});
 })
@@ -18,8 +18,8 @@ app.use(function(req, res, next) {
 
 const ControllerAluno = require("./Controllers/AlunoController")
 const ControleAluno = new ControllerAluno
-const FactoryDisciplina = require("./Model/FactoryDisciplina")
-const FDisciplina = new FactoryDisciplina
+const ControllerOferta= require("./Controllers/OfertaController")
+const ControleOferta= new ControllerOferta
 
 app.get('/ofertas', (req, res, next) => { 
     console.log("Retornou todas Ofertas!");
@@ -31,8 +31,27 @@ app.get('/inscricao_disciplina', (req, res, next) => {
     
 })
 
-app.post('/alunos', (req, res, next) => {
+app.get('/alunos', (req, res, next) => {
+    var alunos = []
+
     console.log("Retornou todos alunos!");
+    var aluno = ControleAluno.criaAluno("Matheus", 11000, 123, 2019, "Ativo", "Mat")
+    alunos.push(aluno)
+    
+    aluno2 =ControleAluno.criaAluno("Pedro", 9000, 1, 2020, "Ativo", "Fis")
+    alunos.push(aluno2)
+    
+    oferta = ControleOferta.criaOferta("Mat", "Laura", 15, "2019/1", 2019)
+    
+    //aluno.newOferta("Mat", "Laura", 15, "2019/1", 2019)
+    aluno.newOferta(oferta)
+
+    res.json(aluno)
+})
+
+
+app.post('/alunos', (req, res, next) => {
+    console.log("Postou um aluno!");
     
     nome = req.body.name
     id = req.body.id
@@ -49,11 +68,11 @@ server.listen(3001);
 console.log("Servidor express escutando na porta 3001...")
 
 
-// const FactoryDisciplina = require("./Model/FactoryDisciplina")
+// const FactoryOferta= require("./Model/FactoryDisciplina")
 // const FactoryAluno = require("./Model/FactoryAluno")
 
 // // const aluno1 = new Aluno("Matheus", 14000, 123, 2019, "Ativo")
-// const FDisciplina = new FactoryDisciplina
+// const FOferta= new FactoryDisciplina
 // const disciplina1 = FDisciplina.criaDisciplina("Mat", 14, "Mat")
 // const disciplina2 = FDisciplina.criaDisciplina("Fis", 20, "Mat")
 
