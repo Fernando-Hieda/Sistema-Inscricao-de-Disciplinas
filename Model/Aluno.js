@@ -30,7 +30,7 @@ module.exports = class Aluno extends IAluno{
     inscreverOfertaDisciplina(id) {
         let aluno = db.get('ofertas').find({ id: 1 }).get('alunos').value()
         
-        aluno.push({ aluno: this.nome, id: this.id,  ira: this.ira})
+        aluno.push({ aluno: this.nome })
 
         db.get('ofertas').find({ id: 1 }).assign({ alunos: aluno }).write()
 

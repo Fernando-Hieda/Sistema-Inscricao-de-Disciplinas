@@ -19,6 +19,17 @@
       "periodo": "2019/1",
       "perfil": 2019,
       "alunos": [
+        {
+          "aluno": {
+            "nome": "Matheus",
+            "ira": 11000,
+            "id": 123,
+            "perfil": 2019,
+            "statusMatricula": "Ativo",
+            "curso": "Mat",
+            "disciplinas": []
+          }
+        }
       ]
     }
   ]

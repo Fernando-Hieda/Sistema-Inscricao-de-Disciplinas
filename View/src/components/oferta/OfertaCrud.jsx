@@ -176,6 +176,10 @@ export default class OfertaCrud extends Component {
 
     renderRows() {
         return this.state.list.map(oferta => {
+            let nomes = []
+            for(let i = 0; oferta.alunos.length; i ++) {
+                nomes[i] = oferta.alunos[i].nome
+            }
             return (
                 <tr key={oferta.id}>
                     <td>{oferta.id}</td>
@@ -185,7 +189,7 @@ export default class OfertaCrud extends Component {
                     <td>{oferta.perfil}</td>
                     <td>{oferta.periodo}</td>
                     <td>{oferta.statusMatricula}</td>
-                    <td>{oferta.alunos}</td>
+                    <td>{nomes}</td>
                     <td>
                         <button className="btn btn-warning"
                             onClick={() => this.load(oferta)}>
