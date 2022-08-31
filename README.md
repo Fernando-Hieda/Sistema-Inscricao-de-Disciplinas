@@ -13,13 +13,12 @@ $ mkdir myapp
 
 $ cd myapp
 
-# Entre no diretório "frontend" e instale a aplicação frontend e suas bibliotecas na máquina local:
-$ cd frontend
+# Entre no diretório "view" e instale a aplicação frontend e suas bibliotecas na máquina local:
+$ cd view
 
 $ npm i
 
-# E agora crie um outro terminal e faça o mesmo com o diretório "backend":
-$ cd backend
+# E agora crie um outro terminal e faça o mesmo com o diretório "Sistema Inscrição de Disciplinas":
 
 $ npm i
 
