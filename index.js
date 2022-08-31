@@ -97,12 +97,16 @@ app.get('/inscricao_disciplina', (req, res, next) => {
     aluno1 = ControleAluno.criaAluno(aluno, ira, id, perfil, statusMatricula, curso)
     aluno1.inscreverOfertaDisciplina(1)
 
+    disciplina1 = ControleOferta.criaOferta("Mat", 1, "Laura", 15, "2019/1", perfil)
+    disciplina1.inscreverAlunoOferta(123)
+
     res.send(aluno)
 })
 
 app.get('/defere_disciplina', (req, res, next) => { 
     aluno1 = ControleAluno.criaAluno("Matheus",11000, 123, 2019, "Ativo", "Mat")
     aluno1.defereOfertaDisciplina(1)
+    
 })
 
 const server = http.createServer(app); 
