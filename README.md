@@ -24,7 +24,7 @@ $ cd backend
 $ npm i
 
 # Para rodar o programa:
-Em um terminal enquanto estiver dentro do diretório "frontend" use o comando:
+Em um terminal enquanto estiver dentro do diretório "view" use o comando:
 
 $ npm start
 
