@@ -2,6 +2,10 @@ module.exports = class IAluno {
     constructor() {
     }
 
+    newOferta(disciplina, professor, vagas, periodo, perfil) {
+        this._WARNING('newOferta(disciplina, professor, vagas, periodo, perfil)')
+    }
+
     inscreverOfertaDisciplina(id) {
         this._WARNING('inscreverOfertaDisciplina(id)')
     }

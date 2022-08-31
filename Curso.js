@@ -1,8 +1,9 @@
-var Disciplina = require("./Model/Disciplina")
+var Disciplina = require("./Disciplina")
 
 module.exports = class curso {
     //propriedades e funções da classe 
     constructor() {
+        this.nome = nome
         this.disciplinas = []
     }
 
