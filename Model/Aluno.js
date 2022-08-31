@@ -21,7 +21,7 @@ module.exports = class Aluno extends IAluno{
     }
 
     newOferta(disciplina, id, professor, vagas, periodo, perfil) {
-        let o = new Oferta(disciplina, professor, vagas, periodo, perfil)
+        let o = new Oferta(disciplina, id, professor, vagas, periodo, perfil)
         this.disciplinasInscritas.push(o.disciplina)
         return o
     }

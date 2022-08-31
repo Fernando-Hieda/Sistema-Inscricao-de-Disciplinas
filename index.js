@@ -18,14 +18,14 @@ const defaultData = {
             "id" : 123,
             "perfil": 2019,
             "statusMatricula": "Ativo",
-            "curso": "Mat",
+            "curso": "Matematica",
             "disciplinas": [
             ]
         }
     ],
     "ofertas": [
         {
-            "disciplina": "Mat",
+            "disciplina": "Calculo 1",
             "professor": "Laura",
             "id": 1,
             "vagas": 15,
@@ -33,6 +33,12 @@ const defaultData = {
             "perfil": 2019,
             "alunos": [
             ]
+        }
+    ],
+    "periodos": [
+        {
+          "semestre": "2019/1",
+          "ofertas": []
         }
     ]
 }
@@ -97,8 +103,8 @@ app.get('/inscricao_disciplina', (req, res, next) => {
     aluno1 = ControleAluno.criaAluno(aluno, ira, id, perfil, statusMatricula, curso)
     aluno1.inscreverOfertaDisciplina(1)
 
-    disciplina1 = ControleOferta.criaOferta("Mat", 1, "Laura", 15, "2019/1", perfil)
-    disciplina1.inscreverAlunoOferta(123)
+    // disciplina1 = ControleOferta.criaOferta("Mat", 1, "Laura", 15, "2019/1", perfil)
+    // disciplina1.inscreverAlunoOferta(123)
 
     res.send(aluno)
 })
