@@ -1,11 +1,12 @@
 const IOferta = require("./InterfaceOferta")
-var Disciplina = require("./Model/Disciplina")
+var Disciplina = require("../Disciplina")
 var Periodo = require ("../Periodo")
-var Aluno = require("./Model/Aluno")
+var Aluno = require("./Aluno")
 
 module.exports = class Oferta extends IOferta {
     //propriedades e funções da classe 
-    constructor(disciplina, professor, vagas, perfil, periodo, alunos) {
+    constructor(disciplina, professor, vagas, periodo, perfil) {
+        super()
         this.disciplina = disciplina
         this.professor = professor
         this.vagas = vagas
@@ -14,9 +15,15 @@ module.exports = class Oferta extends IOferta {
         this.alunos = []
     }
 
+    newDisciplina(nome, key) {
+        let d = new Disciplina(nome, key)
+        this.disciplinas.push(d)
+        return
+    }
+
     newAluno(nome, ira, id, perfil, statusMatricula) {
         let a = new Aluno(nome, ira, id, perfil, statusMatricula)
-        this.alunos.push(d)
+        this.alunos.push(a)
         return a
     }
 

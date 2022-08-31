@@ -1,5 +1,5 @@
-const Aluno = require("./Aluno")
-const Curso = require("../Curso")
+const Aluno = require("./Model/Aluno")
+const Curso = require("./Curso")
 
 module.exports = class Disciplina {
     //propriedades e funções da classe 

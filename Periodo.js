@@ -1,9 +1,9 @@
-var Oferta = require("./Oferta.js")
+var Oferta = require("./Model/Oferta.js")
 
 module.exports = class Periodo {
     //propriedades e funções da classe
     constructor() {
-        this.nome
+        this.perfil = perfil
         this.ofertas = [] 
     }
 
