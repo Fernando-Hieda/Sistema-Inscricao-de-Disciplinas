@@ -15,5 +15,8 @@ export default props =>
             <Link to="/ofertas">
                 <i className="fa fa-ofertas"></i> Ofertas
             </Link>
+            <Link to="/inscricoes">
+                <i className="fa fa-inscricoes"></i> Inscrições
+            </Link>
         </nav>
     </aside>

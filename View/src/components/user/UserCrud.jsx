@@ -10,7 +10,7 @@ const headerProps = {
 
 const baseUrl = 'http://localhost:3001/alunos'
 const initialState = {
-    user: { nome: '', ira: '', id: Number, perfil: '', statusMatricula: '', disciplinas: []},
+    user: { nome: '', ira: Number, id: Number, perfil: Number, statusMatricula: '', curso: '',disciplinas: []},
     list: []
 }
 
@@ -78,6 +78,50 @@ export default class UserCrud extends Component {
                                 placeholder="Digite o ID:"/>
                         </div>
                     </div>
+
+                    <div className="col-12 col-md-6">
+                        <div className="form-group">
+                            <label>Ira</label>
+                            <input type="number" className="form-control" 
+                                name="ira"
+                                value={this.state.user.ira}
+                                onChange={e => this.updateField(e)}
+                                placeholder="Digite o IRA:"/>
+                        </div>
+                    </div>
+
+                    <div className="col-12 col-md-6">
+                        <div className="form-group">
+                            <label>Perfil</label>
+                            <input type="number" className="form-control" 
+                                name="perfil"
+                                value={this.state.user.perfil}
+                                onChange={e => this.updateField(e)}
+                                placeholder="Digite o perfil:"/>
+                        </div>
+                    </div>
+
+                    <div className="col-12 col-md-6">
+                        <div className="form-group">
+                            <label>Status de Matrícula</label>
+                            <input type="text" className="form-control" 
+                                name="statusMatricula"
+                                value={this.state.user.statusMatricula}
+                                onChange={e => this.updateField(e)}
+                                placeholder="Digite o Status de Matrícula:"/>
+                        </div>
+                    </div>
+
+                    <div className="col-12 col-md-6">
+                        <div className="form-group">
+                            <label>Curso</label>
+                            <input type="text" className="form-control" 
+                                name="curso"
+                                value={this.state.user.curso}
+                                onChange={e => this.updateField(e)}
+                                placeholder="Digite o curso:"/>
+                        </div>
+                    </div>
                 </div>
 
                 <hr />
@@ -119,6 +163,7 @@ export default class UserCrud extends Component {
                         <th>Ira</th>
                         <th>Perfil</th>
                         <th>Status de Mátricula</th>
+                        <th>Curso</th>
                         <th>Disciplinas Inscritas</th>
                     </tr>
                 </thead>
@@ -138,6 +183,7 @@ export default class UserCrud extends Component {
                     <td>{user.ira}</td>
                     <td>{user.perfil}</td>
                     <td>{user.statusMatricula}</td>
+                    <td>{user.curso}</td>
                     <td>{user.disciplinas}</td>
                     <td>
                         <button className="btn btn-warning"

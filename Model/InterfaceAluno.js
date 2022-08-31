@@ -2,7 +2,7 @@ module.exports = class IAluno {
     constructor() {
     }
 
-    newOferta(disciplina, professor, vagas, periodo, perfil) {
+    newOferta(disciplina, id, professor, vagas, periodo, perfil) {
         this._WARNING('newOferta(disciplina, professor, vagas, periodo, perfil)')
     }
 

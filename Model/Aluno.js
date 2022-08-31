@@ -1,7 +1,11 @@
 var IAluno = require("./InterfaceAluno")
 var Oferta = require("./Oferta")
-var Curso = require("../Curso")
 const oferta = new Oferta
+
+const low= require('lowdb')
+const FileSync = require('lowdb/adapters/FileSync')
+const adapter = new FileSync('db.json')
+const db = low(adapter)
 
 module.exports = class Aluno extends IAluno{
     //propriedades e funções da classe Aluno
@@ -16,28 +20,40 @@ module.exports = class Aluno extends IAluno{
         this.disciplinasInscritas = []
     }
 
-    newOferta(disciplina, professor, vagas, periodo, perfil) {
+    newOferta(disciplina, id, professor, vagas, periodo, perfil) {
         let o = new Oferta(disciplina, professor, vagas, periodo, perfil)
         this.disciplinasInscritas.push(o.disciplina)
         return o
     }
 
     inscreverOfertaDisciplina(id) {
+        let aluno = db.get('ofertas').find({ id: 1 }).get('alunos').value()
+        
+        aluno.push({ aluno: this.nome })
+
+        db.get('ofertas').find({ id: 1 }).assign({ alunos: aluno }).write()
+
         return 1
     }
 
-    getAllDisciplinasInscritas() {
-        return this.disciplinasInscritas
+    getAllDisciplinasInscritas(id) {
+        let disciplinas = db.get('alunos').find({id: id}).get('disciplinas').value()
+
+        return disciplinas
     }
 
     getGruposAcademicosInscritos() {
 
     }
 
+    getPendenciasBiblioteca() {
+
+    }
+
     checarRequerimentos() {
         if(this.statusMatricula = 'Ativo') {
-            if(this.pendenciasBiblioteca = 0) {
-                if(this.gruposAcademicosInscritos <= 2) {
+            if(this.getPendenciasBiblioteca() = 0) {
+                if(this.getGruposAcademicosInscritos() <= 2) {
                     return true;
                 }
                 console.log("Erro: No maximo 2 grupos academicos para se inscrever em uma oferta")
@@ -48,16 +64,6 @@ module.exports = class Aluno extends IAluno{
        }
        console.log("Erro: Matricula deve estar ativa para se inscrever em uma oferta.")
        return false;
-    }
-
-    inscreverDisciplina(id) {
-          // if(this.checarRequerimentos() = true) {
-            //    if(oferta.perfil == this.perfil) {
-                    //defere
-
-              //  }
-                //concorrer usando o ira
-          // }
     }
 
     deferirDisciplina() {

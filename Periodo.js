@@ -3,7 +3,7 @@ var Oferta = require("./Model/Oferta.js")
 module.exports = class Periodo {
     //propriedades e funções da classe
     constructor() {
-        this.perfil = perfil
+        this.semestre = semestre
         this.ofertas = [] 
     }
 
@@ -13,7 +13,9 @@ module.exports = class Periodo {
         return o
     }
 
-    listarOfertas() {
-        return this.ofertas
+    listarOfertas(semestre) {
+        let ofertas = db.get('periodos').find({semestre: semestre}).get('alunos').value()
+
+        return ofertas
     }
 }

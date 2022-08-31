@@ -4,6 +4,40 @@ const express = require('express');
 const app = express(); 
 const bodyParser = require('body-parser');
 
+const low= require('lowdb')
+const FileSync = require('lowdb/adapters/FileSync')
+const adapter = new FileSync('db.json')
+const db = low(adapter)
+
+
+const defaultData = {
+    "alunos": [
+        {
+            "nome": "Matheus",
+            "ira": 11000,      
+            "id" : 123,
+            "perfil": 2019,
+            "statusMatricula": "Ativo",
+            "curso": "Mat",
+            "disciplinas": [
+            ]
+        }
+    ],
+    "ofertas": [
+        {
+            "disciplina": "Mat",
+            "professor": "Laura",
+            "id": 1,
+            "vagas": 15,
+            "periodo": "2019/1",
+            "perfil": 2019,
+            "alunos": [
+            ]
+        }
+    ]
+}
+db.defaults(defaultData).write()
+
 app.use(bodyParser.json());
 
 app.get('/', (req, res, next) => {
@@ -22,31 +56,16 @@ const ControllerOferta= require("./Controllers/OfertaController")
 const ControleOferta= new ControllerOferta
 
 app.get('/ofertas', (req, res, next) => { 
-    console.log("Retornou todas Ofertas!");
+    const ofertas = db.get("ofertas").value()
     
-    res.json([ofertas])
+    res.send(ofertas)
 })
 
-app.get('/inscricao_disciplina', (req, res, next) => { 
-    
-})
 
 app.get('/alunos', (req, res, next) => {
-    var alunos = []
-
-    console.log("Retornou todos alunos!");
-    var aluno = ControleAluno.criaAluno("Matheus", 11000, 123, 2019, "Ativo", "Mat")
-    alunos.push(aluno)
+    const alunos = db.get("alunos").value()
     
-    aluno2 =ControleAluno.criaAluno("Pedro", 9000, 1, 2020, "Ativo", "Fis")
-    alunos.push(aluno2)
-    
-    oferta = ControleOferta.criaOferta("Mat", "Laura", 15, "2019/1", 2019)
-    
-    //aluno.newOferta("Mat", "Laura", 15, "2019/1", 2019)
-    aluno.newOferta(oferta)
-
-    res.json(aluno)
+    res.send(alunos)
 })
 
 
@@ -54,38 +73,40 @@ app.post('/alunos', (req, res, next) => {
     console.log("Postou um aluno!");
     
     nome = req.body.name
+    ira = req.body.ira
     id = req.body.id
+    perfil = req.body.perfil
+    statusMatricula = req.body.statusMatricula
+    curso = req.body.curso
+    
+    aluno = ControleAluno.criaAluno(nome, ira, id, perfil, statusMatricula, curso)
+    
+    res.json(aluno)
+})
 
-    for (let i = 0; i < alunos.length(); i ++) {
-        if(alunos[i].nome = nome)
-            res.json(alunos[i])
-    }
-    // res.json([alunos, aluno, aluno.getAllDisciplinasInscritas()])
+app.get('/inscricao_disciplina', (req, res, next) => {
+    let aluno = db.get('alunos').find({ id: 123 }).value()
+    
+    nome = aluno.name
+    ira = aluno.ira
+    id = aluno.id
+    perfil = aluno.perfil
+    statusMatricula = aluno.statusMatricula
+    curso = aluno.curso
+
+    aluno1 = ControleAluno.criaAluno(aluno, ira, id, perfil, statusMatricula, curso)
+    aluno1.inscreverOfertaDisciplina(1)
+
+    res.send(aluno)
+})
+
+app.get('/defere_disciplina', (req, res, next) => { 
+    aluno1 = ControleAluno.criaAluno("Matheus",11000, 123, 2019, "Ativo", "Mat")
+    aluno1.defereOfertaDisciplina(1)
 })
 
 const server = http.createServer(app); 
 server.listen(3001);
 console.log("Servidor express escutando na porta 3001...")
 
-
-// const FactoryOferta= require("./Model/FactoryDisciplina")
-// const FactoryAluno = require("./Model/FactoryAluno")
-
-// // const aluno1 = new Aluno("Matheus", 14000, 123, 2019, "Ativo")
-// const FOferta= new FactoryDisciplina
-// const disciplina1 = FDisciplina.criaDisciplina("Mat", 14, "Mat")
-// const disciplina2 = FDisciplina.criaDisciplina("Fis", 20, "Mat")
-
-// const FAluno = new FactoryAluno
-// const aluno2 = FAluno.criaAluno("Matheus", 14000, 123, 2019, "Ativo")
-
-// // console.log(aluno1)
-// console.log(disciplina1)
-// // console.log(disciplina2)
-// console.log(aluno2)
-
-// aluno2.newDisciplina(disciplina1.nome)
-// aluno2.newDisciplina(disciplina2.nome)
-
-// // console.log(aluno1)
-// console.log(aluno2.allDisciplinasInscritas)
+exports.db = db

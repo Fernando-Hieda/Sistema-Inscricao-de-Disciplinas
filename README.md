@@ -13,21 +13,20 @@ $ mkdir myapp
 
 $ cd myapp
 
-# Entre no diretório "frontend" e instale a aplicação frontend e suas bibliotecas na máquina local:
-$ cd frontend
+# Entre no diretório "view" e instale a aplicação frontend e suas bibliotecas na máquina local:
+$ cd view
 
 $ npm i
 
-# E agora crie um outro terminal e faça o mesmo com o diretório "backend":
-$ cd backend
+# E agora crie um outro terminal e faça o mesmo com o diretório "Sistema Inscrição de Disciplinas":
 
 $ npm i
 
 # Para rodar o programa:
-Em um terminal enquanto estiver dentro do diretório "frontend" use o comando:
+Em um terminal enquanto estiver dentro do diretório "view" use o comando:
 
 $ npm start
 
-E faça o mesmo em outro terminal utilizando o diretório "backend":
+E faça o comando indicado em outro terminal utilizando o diretório "Sistema Inscrição de Disciplinas":
 
-$ npm start
+$ npm run dev
