@@ -2,7 +2,7 @@ var Oferta = require("./Oferta.js")
 
 module.exports = class Periodo {
     //propriedades e funções da classe
-    constructor(nome) {
+    constructor() {
         this.nome
         this.ofertas = [] 
     }
