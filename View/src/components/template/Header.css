@@ -1,0 +1,13 @@
+header.header {
+    background-color: rgba(141, 190, 228, 0.279);
+    padding: 0px 0px;
+    overflow: hidden;
+    white-space: nowrap;
+    box-shadow: 
+        2px 0 10px 0 rgba(0, 0, 0, 0.12),
+        2px 0 15px 0 rgba(0, 0, 0, 0.09);
+}
+
+header.header h1 {
+    font-size: 1.8em;
+}

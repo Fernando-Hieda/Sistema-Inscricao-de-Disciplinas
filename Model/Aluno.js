@@ -19,6 +19,10 @@ module.exports = class Aluno extends IAluno{
         return o
     }
 
+    inscreverOfertaDisciplina(id) {
+        return 1
+    }
+
     getAllDisciplinasInscritas() {
         return this.disciplinasInscritas
     }

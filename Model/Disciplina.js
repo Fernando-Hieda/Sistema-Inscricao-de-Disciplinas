@@ -3,7 +3,7 @@ const Curso = require("../Curso")
 
 module.exports = class Disciplina {
     //propriedades e funções da classe 
-    constructor(nome, key, cursos) {
+    constructor(nome, key) {
         this.nome = nome
         this.key = key
         this.cursos = []
