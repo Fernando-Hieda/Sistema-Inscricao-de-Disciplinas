@@ -28,6 +28,6 @@ Em um terminal enquanto estiver dentro do diretório "view" use o comando:
 
 $ npm start
 
-E faça o comando indicado em outro terminal utilizando o diretório "backend":
+E faça o comando indicado em outro terminal utilizando o diretório "Sistema Inscrição de Disciplinas":
 
 $ npm run dev
