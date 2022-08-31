@@ -9,6 +9,5 @@ export default props =>
     <Switch>
         <Route exact path='/' component={Home} />
         <Route path='/users' component={UserCrud} />
-        <Route path='/disciplinas' component ={DisciplinaCrud} />
         <Redirect from='*' to='/' />
     </Switch>
