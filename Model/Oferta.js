@@ -1,7 +1,12 @@
 const IOferta = require("./InterfaceOferta")
 var Disciplina = require("../Disciplina")
-var Periodo = require ("../Periodo")
 var Aluno = require("./Aluno")
+var Curso = require("../Curso")
+
+const low= require('lowdb')
+const FileSync = require('lowdb/adapters/FileSync')
+const adapter = new FileSync('db.json')
+const db = low(adapter)
 
 module.exports = class Oferta extends IOferta {
     //propriedades e funções da classe 
@@ -18,7 +23,7 @@ module.exports = class Oferta extends IOferta {
 
     newDisciplina(nome, key) {
         let d = new Disciplina(nome, key)
-        this.disciplinas.push(d)
+        this.disciplinas = d
         return
     }
 
@@ -28,11 +33,15 @@ module.exports = class Oferta extends IOferta {
         return a
     }
 
-    get alunosDeferidos(){
-        return this.alunos
+    newCurso(nome) {
+        let c = new Curso(nome)
+        this.periodo = c
+        return c
     }
 
-   // get getPeriodo() {
-    //    return this.periodo
-   // }
+    getAlunosDeferidos(id) {
+        let alunos = db.get('ofertas').find({id: id}).get('alunos').value()
+
+        return alunos
+    }
 }

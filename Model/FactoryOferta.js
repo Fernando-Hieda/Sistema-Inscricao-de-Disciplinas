@@ -4,7 +4,7 @@ module.exports = class FactoryOferta {
     constructor(){
     
     }
-    criaOferta(disciplina, professor, vagas, periodo, perfil) {
-        return new Oferta(disciplina, professor, vagas, periodo, perfil)
+    criaOferta(disciplina, id, professor, vagas, periodo, perfil) {
+        return new Oferta(disciplina, id, professor, vagas, periodo, perfil)
     }    
 }

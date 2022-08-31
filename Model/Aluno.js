@@ -1,6 +1,5 @@
 var IAluno = require("./InterfaceAluno")
 var Oferta = require("./Oferta")
-var Curso = require("../Curso")
 const oferta = new Oferta
 
 const low= require('lowdb')
@@ -37,18 +36,24 @@ module.exports = class Aluno extends IAluno{
         return 1
     }
 
-    getAllDisciplinasInscritas() {
-        return this.disciplinasInscritas
+    getAllDisciplinasInscritas(id) {
+        let disciplinas = db.get('alunos').find({id: id}).get('disciplinas').value()
+
+        return disciplinas
     }
 
     getGruposAcademicosInscritos() {
 
     }
 
+    getPendenciasBiblioteca() {
+
+    }
+
     checarRequerimentos() {
         if(this.statusMatricula = 'Ativo') {
-            if(this.pendenciasBiblioteca = 0) {
-                if(this.gruposAcademicosInscritos <= 2) {
+            if(this.getPendenciasBiblioteca() = 0) {
+                if(this.getGruposAcademicosInscritos() <= 2) {
                     return true;
                 }
                 console.log("Erro: No maximo 2 grupos academicos para se inscrever em uma oferta")
@@ -59,16 +64,6 @@ module.exports = class Aluno extends IAluno{
        }
        console.log("Erro: Matricula deve estar ativa para se inscrever em uma oferta.")
        return false;
-    }
-
-    inscreverDisciplina(id) {
-          // if(this.checarRequerimentos() = true) {
-            //    if(oferta.perfil == this.perfil) {
-                    //defere
-
-              //  }
-                //concorrer usando o ira
-          // }
     }
 
     deferirDisciplina() {

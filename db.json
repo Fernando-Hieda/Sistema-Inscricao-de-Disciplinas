@@ -32,5 +32,11 @@
         }
       ]
     }
+  ],
+  "periodos": [
+    {
+      "semestre": "2019/1",
+      "ofertas": []      
+    }
   ]
 }
