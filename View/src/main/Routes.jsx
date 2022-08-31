@@ -3,7 +3,6 @@ import { Switch, Route, Redirect} from 'react-router'
 
 import Home from '../components/home/home'
 import UserCrud from '../components/user/UserCrud'
-import DisciplinaCrud from '../components/disciplina/DisciplinaCrud'
 
 export default props =>
     <Switch>
