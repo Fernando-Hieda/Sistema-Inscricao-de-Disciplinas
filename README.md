@@ -28,6 +28,6 @@ Em um terminal enquanto estiver dentro do diretório "frontend" use o comando:
 
 $ npm start
 
-E faça o mesmo em outro terminal utilizando o diretório "backend":
+E faça o comando indicado em outro terminal utilizando o diretório "backend":
 
-$ npm start
+$ npm run dev

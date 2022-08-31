@@ -18,6 +18,7 @@ const defaultData = {
             "id" : 123,
             "perfil": 2019,
             "statusMatricula": "Ativo",
+            "curso": "Mat",
             "disciplinas": [
             ]
         }
@@ -57,7 +58,7 @@ const ControleOferta= new ControllerOferta
 app.get('/ofertas', (req, res, next) => { 
     const ofertas = db.get("ofertas").value()
     
-    res.json(ofertas)
+    res.send(ofertas)
 })
 
 
@@ -83,9 +84,20 @@ app.post('/alunos', (req, res, next) => {
     res.json(aluno)
 })
 
-app.get('/inscricao_disciplina', (req, res, next) => { 
-    aluno1 = ControleAluno.criaAluno("Matheus",11000, 123, 2019, "Ativo", "Mat")
+app.get('/inscricao_disciplina', (req, res, next) => {
+    let aluno = db.get('alunos').find({ id: 123 }).value()
+    
+    nome = aluno.name
+    ira = aluno.ira
+    id = aluno.id
+    perfil = aluno.perfil
+    statusMatricula = aluno.statusMatricula
+    curso = aluno.curso
+
+    aluno1 = ControleAluno.criaAluno(aluno, ira, id, perfil, statusMatricula, curso)
     aluno1.inscreverOfertaDisciplina(1)
+
+    res.send(aluno)
 })
 
 app.get('/defere_disciplina', (req, res, next) => { 
