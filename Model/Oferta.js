@@ -5,9 +5,10 @@ var Aluno = require("./Aluno")
 
 module.exports = class Oferta extends IOferta {
     //propriedades e funções da classe 
-    constructor(disciplina, professor, vagas, periodo, perfil) {
+    constructor(disciplina, id, professor, vagas, periodo, perfil) {
         super()
         this.disciplina = disciplina
+        this.id = id
         this.professor = professor
         this.vagas = vagas
         this.periodo = periodo

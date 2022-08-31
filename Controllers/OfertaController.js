@@ -6,7 +6,7 @@ module.exports = class Controller {
     FOferta = new FactoryOferta
     IOferta = new IOferta
     
-    criaOferta(disciplina, professor, vagas, periodo, perfil) {
+    criaOferta(disciplina, id, professor, vagas, periodo, perfil) {
         return this.FOferta.criaOferta(disciplina, professor, vagas, periodo, perfil)
     }
     

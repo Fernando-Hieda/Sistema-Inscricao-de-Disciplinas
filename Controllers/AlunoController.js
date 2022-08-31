@@ -10,7 +10,7 @@ module.exports = class ControllerAluno extends IAluno{
         return this.FAluno.criaAluno(nome, ira, id, perfil, statusMatricula, curso)
     }
     
-    newOferta(disciplina, professor, vagas, periodo, perfil) {
+    newOferta(disciplina, id, professor, vagas, periodo, perfil) {
         return this.IAluno.newOferta(disciplina, professor, vagas, periodo, perfil)
     }
 

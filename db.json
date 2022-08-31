@@ -1,24 +1,29 @@
 {
   "alunos": [
     {
-      "nome": "",
-      "id" : "",
-      "ira": "",      
-      "perfil": "",
-      "Status de Mátricula": "",
-      "Disciplinas": ""
-    },
-    {
-      "nome": "",
-      "id" : "",
-      "ira": "",      
-      "perfil": "",
-      "Status de Mátricula": "",
-      "Disciplinas": ""
+      "nome": "Matheus",
+      "ira": 11000,
+      "id": 123,
+      "perfil": 2019,
+      "statusMatricula": "Ativo",
+      "disciplinas": []
     }
   ],
   "ofertas": [
     {
+      "disciplina": "Mat",
+      "id": 1,
+      "professor": "Laura",
+      "vagas": 15,
+      "periodo": "2019/1",
+      "perfil": 2019,
+      "alunos": [
+        {
+          "aluno": "Matheus",
+          "id": 123,
+          "ira": 11000
+        }
+      ]
     }
   ]
 }

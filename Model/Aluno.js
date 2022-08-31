@@ -3,6 +3,11 @@ var Oferta = require("./Oferta")
 var Curso = require("../Curso")
 const oferta = new Oferta
 
+const low= require('lowdb')
+const FileSync = require('lowdb/adapters/FileSync')
+const adapter = new FileSync('db.json')
+const db = low(adapter)
+
 module.exports = class Aluno extends IAluno{
     //propriedades e funções da classe Aluno
     constructor(nome, ira, id, perfil, statusMatricula, curso) {
@@ -16,13 +21,19 @@ module.exports = class Aluno extends IAluno{
         this.disciplinasInscritas = []
     }
 
-    newOferta(disciplina, professor, vagas, periodo, perfil) {
+    newOferta(disciplina, id, professor, vagas, periodo, perfil) {
         let o = new Oferta(disciplina, professor, vagas, periodo, perfil)
         this.disciplinasInscritas.push(o.disciplina)
         return o
     }
 
     inscreverOfertaDisciplina(id) {
+        let aluno = db.get('ofertas').find({ id: 1 }).get('alunos').value()
+        
+        aluno.push({ aluno: this.nome, id: this.id,  ira: this.ira})
+
+        db.get('ofertas').find({ id: 1 }).assign({ alunos: aluno }).write()
+
         return 1
     }
 
