@@ -1,7 +1,7 @@
 const IOferta = require("./InterfaceOferta")
-var Disciplina = require("../Disciplina")
+var Disciplina = require("./Disciplina")
 var Aluno = require("./Aluno")
-var Curso = require("../Curso")
+var Curso = require("./Curso")
 
 const low= require('lowdb')
 const FileSync = require('lowdb/adapters/FileSync')
