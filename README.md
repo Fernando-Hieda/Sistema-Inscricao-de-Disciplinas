@@ -13,7 +13,7 @@ $ mkdir myapp
 
 $ cd myapp
 
-# Entre no diretório "view", e primeiro delete a pasta node_modules e depois instale a aplicação frontend e suas bibliotecas na máquina local:
+# Entre no diretório "view", e primeiro delete a pasta "node_modules" e depois instale a aplicação frontend e suas bibliotecas na máquina local:
 $ cd view
 
 $ npm i
