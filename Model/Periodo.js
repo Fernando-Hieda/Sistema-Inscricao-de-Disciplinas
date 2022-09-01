@@ -1,4 +1,4 @@
-var Oferta = require("./Model/Oferta.js")
+var Oferta = require("./Oferta.js")
 
 module.exports = class Periodo {
     //propriedades e funções da classe
