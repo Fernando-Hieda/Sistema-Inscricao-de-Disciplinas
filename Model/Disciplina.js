@@ -1,4 +1,3 @@
-const Aluno = require("./Model/Aluno")
 const Curso = require("./Curso")
 
 module.exports = class Disciplina {
