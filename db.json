@@ -7,7 +7,14 @@
       "perfil": 2019,
       "statusMatricula": "Ativo",
       "curso": "Matematica",
-      "disciplinas": []
+      "disciplinas": [
+        {
+          "oferta": "Cálculo 1"
+        },
+        {
+          "oferta": "Física 1"
+        }
+      ]
     },
     {
       "nome": "Pedro",
@@ -36,7 +43,26 @@
       "vagas": 15,
       "periodo": "2019/1",
       "perfil": 2019,
-      "alunos": []
+      "alunos": [
+        {
+          "aluno": {
+            "nome": "Matheus",
+            "ira": 11000,
+            "id": 123,
+            "perfil": 2019,
+            "statusMatricula": "Ativo",
+            "curso": "Matematica",
+            "disciplinas": [
+              {
+                "oferta": "Cálculo 1"
+              },
+              {
+                "oferta": "Física 1"
+              }
+            ]
+          }
+        }
+      ]
     },
     {
       "disciplina": "Física 1",
@@ -44,7 +70,35 @@
       "professor": "Jorge",
       "vagas": 10,
       "periodo": "2019/1",
-      "perfil": 2020,
+      "perfil": 2018,
+      "alunos": [
+        {
+          "aluno": {
+            "nome": "Matheus",
+            "ira": 11000,
+            "id": 123,
+            "perfil": 2019,
+            "statusMatricula": "Ativo",
+            "curso": "Matematica",
+            "disciplinas": [
+              {
+                "oferta": "Cálculo 1"
+              },
+              {
+                "oferta": "Física 1"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "disciplina": "Química 1",
+      "id": 3,
+      "professor": "Rodrigo",
+      "vagas": 20,
+      "periodo": "2019/1",
+      "perfil": 2019,
       "alunos": []
     }
   ],
