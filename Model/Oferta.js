@@ -38,6 +38,16 @@ module.exports = class Oferta extends IOferta {
         this.periodo = c
         return c
     }
+    
+    inscreverAlunoOferta(idAluno) {
+        let oferta = db.get('alunos').find({ id: idAluno }).get('disciplinas').value()
+
+        oferta.push({ oferta: this.disciplina })
+
+        db.get('alunos').find({ id: idAluno }).assign({ disciplinas: oferta}).write()
+
+        return 1
+    }
 
     getAlunosDeferidos(id) {
         let alunos = db.get('ofertas').find({id: id}).get('alunos').value()

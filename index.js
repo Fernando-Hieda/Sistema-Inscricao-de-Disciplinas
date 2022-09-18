@@ -3,6 +3,7 @@ const http = require('http');
 const express = require('express'); 
 const app = express(); 
 const bodyParser = require('body-parser');
+const cors = require('cors');
 
 const low= require('lowdb')
 const FileSync = require('lowdb/adapters/FileSync')
@@ -45,16 +46,16 @@ const defaultData = {
 db.defaults(defaultData).write()
 
 app.use(bodyParser.json());
-
+app.use(cors())
 app.get('/', (req, res, next) => {
     res.json({message: "Tudo ok por aqui!"});
 })
 
-app.use(function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    next();
-});
+// app.use(function(req, res, next) {
+//     res.header("Access-Control-Allow-Origin", "*");
+//     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+//     next();
+// });
 
 const ControllerAluno = require("./Controllers/AlunoController")
 const ControleAluno = new ControllerAluno
@@ -74,6 +75,14 @@ app.get('/alunos', (req, res, next) => {
     res.send(alunos)
 })
 
+app.get('/alunos/:id', (req, res, next) => {
+    id = req.params.id
+    id = Number(id)
+    
+    const alunos = db.get("alunos").find({ id: id }).value()
+    
+    res.send(alunos)
+})
 
 app.post('/alunos', (req, res, next) => {
     console.log("Postou um aluno!");
@@ -100,13 +109,16 @@ app.get('/inscricao_disciplina', (req, res, next) => {
     statusMatricula = aluno.statusMatricula
     curso = aluno.curso
 
-    aluno1 = ControleAluno.criaAluno(aluno, ira, id, perfil, statusMatricula, curso)
-    aluno1.inscreverOfertaDisciplina(1)
+    // aluno1 = ControleAluno.criaAluno(aluno, ira, id, perfil, statusMatricula, curso)
+    // aluno1.inscreverOfertaDisciplina(1)
+    // aluno1.inscreverOfertaDisciplina(2)
 
-    // disciplina1 = ControleOferta.criaOferta("Mat", 1, "Laura", 15, "2019/1", perfil)
+    // disciplina1 = ControleOferta.criaOferta("Cálculo 1", 1, "Laura", 15, "2019/1", 2019)
     // disciplina1.inscreverAlunoOferta(123)
 
-    res.send(aluno)
+    // disciplina1 = ControleOferta.criaOferta("Física 1", 2, "Jorge", 10, "2019/1", 2018)
+    // disciplina1.inscreverAlunoOferta(123)
+    res.send(aluno1.getAllDisciplinasInscritas(123))
 })
 
 app.get('/defere_disciplina', (req, res, next) => { 
