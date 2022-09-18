@@ -4,9 +4,10 @@ const adapter = new FileSync('db.json')
 const db = low(adapter)
 
 const getNumeroDisciplinas = (id) => {
-    let n = db.get('alunos').find({id: id}).get('ofertas').value()
+    let disciplinas = db.get('alunos').find({id: id}).get('disciplinas').value()
 
-    return n 
+    numeroDisciplinas = Object.keys(disciplinas).length
+    return numeroDisciplinas 
 }
 
 exports.getNumeroDisciplinas = getNumeroDisciplinas
