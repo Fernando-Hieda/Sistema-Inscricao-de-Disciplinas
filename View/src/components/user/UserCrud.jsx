@@ -2,6 +2,11 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import Main from '../template/Main'
 
+// const low= require('lowdb')
+// const FileSync = require('lowdb/adapters/FileSync')
+// const adapter = new FileSync('db.json')
+// const db = low(adapter)
+
 const headerProps = {
     icon: 'users',
     title: 'Usuários',
@@ -10,7 +15,7 @@ const headerProps = {
 
 const baseUrl = 'http://localhost:3001/alunos'
 const initialState = {
-    user: { nome: '', ira: Number, id: Number, perfil: Number, statusMatricula: '', curso: '',disciplinas: []},
+    user: { nome: '', ira: Number, id: Number, perfil: Number, statusMatricula: '', curso: '', disciplinas: []},
     list: []
 }
 
@@ -31,7 +36,12 @@ export default class UserCrud extends Component {
     save() {
         const user = this.state.user
         const method = user.id ? 'put' : 'post' //put:edita e post:cria
-        const url = user.id ? `${baseUrl}/${user.id}` : baseUrl
+        const url = user.id ? baseUrl : baseUrl
+        // if(method === 'put')
+        //     db.get("alunos").remove({ id: user.id }).write()
+        //     db.assign({ alunos: user })
+        // if(method === 'post')
+        //     db.assign({ alunos: user})
         axios[method](url, user)
             .then(resp => {
                 const list = this.getUpdatedList(resp.data)
@@ -49,7 +59,7 @@ export default class UserCrud extends Component {
 
     updateField(event) {
         const user = { ...this.state.user }
-        user[event.target.nome] = event.target.value
+        user[event.target.name] = event.target.value
         this.setState({ user })
     }
 
@@ -61,10 +71,21 @@ export default class UserCrud extends Component {
                         <div className="form-group">
                             <label>Nome</label>
                             <input type="text" className="form-control" 
-                                name="name"
-                                value={this.state.user.name}
+                                name="nome"
+                                value={this.state.user.nome}
                                 onChange={e => this.updateField(e)}
                                 placeholder="Digite o nome:"/>
+                        </div>
+                    </div>
+
+                    <div className="col-12 col-md-6">
+                        <div className="form-group">
+                            <label>IRA</label>
+                            <input type="Number" className="form-control" 
+                                name="ira"
+                                value={this.state.user.ira}
+                                onChange={e => this.updateField(e)}
+                                placeholder="Digite o IRA:"/>
                         </div>
                     </div>
 
@@ -76,17 +97,6 @@ export default class UserCrud extends Component {
                                 value={this.state.user.id}
                                 onChange={e => this.updateField(e)}
                                 placeholder="Digite o ID:"/>
-                        </div>
-                    </div>
-
-                    <div className="col-12 col-md-6">
-                        <div className="form-group">
-                            <label>Ira</label>
-                            <input type="number" className="form-control" 
-                                name="ira"
-                                value={this.state.user.ira}
-                                onChange={e => this.updateField(e)}
-                                placeholder="Digite o IRA:"/>
                         </div>
                     </div>
 
