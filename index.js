@@ -48,7 +48,7 @@ db.defaults(defaultData).write()
 app.use(bodyParser.json());
 app.use(cors())
 app.get('/', (req, res, next) => {
-    res.json({message: "Tudo ok por aqui!"});
+    res.json({message: "Tela Inicial, para começar acrescente /alunos ou /ofertas na url"});
 })
 
 // app.use(function(req, res, next) {
@@ -122,13 +122,13 @@ app.get('/inscricao_disciplina', (req, res, next) => {
 })
 
 app.get('/defere_disciplina', (req, res, next) => { 
-    aluno1 = ControleAluno.criaAluno("Matheus",11000, 123, 2019, "Ativo", "Mat")
+    aluno1 = ControleAluno.criaAluno("Pedro", 8000, 456, 2020, "Ativo", "Fisica")
     aluno1.defereOfertaDisciplina(1)
     
 })
 
 const server = http.createServer(app); 
-server.listen(3001);
+server.listen(process.env.PORT || 3001);
 console.log("Servidor express escutando na porta 3001...")
 
 exports.db = db
