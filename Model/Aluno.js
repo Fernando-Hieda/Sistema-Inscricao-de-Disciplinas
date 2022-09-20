@@ -1,9 +1,11 @@
 var IAluno = require("./InterfaceAluno")
 var Oferta = require("./Oferta")
+var State = require("./State")
 const oferta = new Oferta
 
 const low= require('lowdb')
 const FileSync = require('lowdb/adapters/FileSync')
+const Ativo = require("./Ativo")
 const adapter = new FileSync('db.json')
 const db = low(adapter)
 
@@ -18,6 +20,8 @@ module.exports = class Aluno extends IAluno{
         this.statusMatricula = statusMatricula
         this.curso = curso
         this.disciplinasInscritas = []
+        this.currentState = State
+        this.previousState = State
     }
 
     newOferta(disciplina, id, professor, vagas, periodo, perfil) {
@@ -86,6 +90,35 @@ module.exports = class Aluno extends IAluno{
             }
         }
         return true
+    }
+
+    Aluno(){
+        this.currentState = new Ativo()
+        this.previousState = null
+    }
+
+    ativarMatricula(){
+        this.currentState.ativarMatricula(this)
+    }
+
+    trancarMatricula(){
+        this.currentState.trancarMatricula(this)
+    }
+
+    suspenderMatricula(){
+        this.currentState.suspenderMatricula(this)
+    }
+
+    afastarAluno(){
+        this.currentState.afastarMatricula(this)
+    }
+
+    terminarCurso(){
+        this.currentState.terminarCurso(this)
+    }
+
+    jubilarAluno(){
+        this.currentState.jubilarAluno(this)
     }
 
 }

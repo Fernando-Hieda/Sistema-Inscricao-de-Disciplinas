@@ -3,159 +3,31 @@ module.exports = class State {
     
     }
 
-    changeStatusMatricula(){
-
-    }
-
     ativarMatricula(){
-        
+        this._WARNING('ativarMatricula(statusMatricula)')
     }
 
     trancarMatricula(){
-        
+        this._WARNING('trancarMatricula(statusMatricula)')
     }
 
     suspenderMatricula(){
-        
+        this._WARNING('suspenderMatricula(statusMatricula)')
     }
 
     afastarAluno(){
-        
+        this._WARNING('afastarAluno(statusMatricula)')
     }
 
     terminarCurso(){
-        
+        this._WARNING('terminarCurso(statusMatricula)')
     }
 
     jubilarAluno(){
-        
-    }
-}
-
-module.exports = class Ativo extends State {
-    constructor() {
-    
+        this._WARNING('jubilarAluno(statusMatricula)')
     }
 
-    changeStatusMatricula(){
-
-    }
-
-    trancarMatricula(){
-        
-    }
-
-    suspenderMatricula(){
-        
-    }
-
-    afastarAluno(){
-        
-    }
-
-    terminarCurso(){
-        
-    }
-
-    jubilarAluno(){
-        
-    }
-}
-
-module.exports = class MatriculaTrancada extends State {
-    constructor() {
-    
-    }
-
-    changeStatusMatricula(){
-
-    }
-
-    ativarMatricula(){
-        
-    }
-
-    suspenderMatricula(){
-        
-    }
-}
-
-module.exports = class Suspenso extends State {
-    constructor() {
-    
-    }
-
-    changeStatusMatricula(){
-
-    }
-
-    ativarMatricula(){
-        
-    }
-
-    trancarMatricula(){
-        
-    }
-
-    afastarAluno(){
-        
-    }
-}
-
-module.exports = class Afastado extends State {
-    constructor() {
-    
-    }
-
-    changeStatusMatricula(){
-
-    }
-
-    ativarMatricula(){
-        
-    }
-
-    trancarMatricula(){
-        
-    }
-
-    suspenderMatricula(){
-        
-    }
-}
-
-module.exports = class Formado extends State {
-    constructor() {
-    
-    }
-
-    changeStatusMatricula(){
-
-    }
-}
-
-module.exports = class Jubilado extends State {
-    constructor() {
-    
-    }
-
-    changeStatusMatricula(){
-
-    }
-
-    ativarMatricula(){
-        
-    }
-
-    trancarMatricula(){
-        
-    }
-
-    suspenderMatricula(){
-        
-    }
-
-    afastarAluno(){
-        
+    _WARNING(fName = 'unknown method') {
+        console.warn('WARNING! Function "' + fName + '" is not overridden in ' + this.constructor.name);
     }
 }
