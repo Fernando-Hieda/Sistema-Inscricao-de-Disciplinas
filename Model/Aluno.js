@@ -27,12 +27,13 @@ module.exports = class Aluno extends IAluno{
     }
 
     inscreverOfertaDisciplina(idOferta) {
-        let aluno = db.get('ofertas').find({ id: idOferta }).get('alunos').value()
-        
-        aluno.push({ aluno: this.nome })
+        if (this.checarRequerimentos()) {
+            let aluno = db.get('ofertas').find({ id: idOferta }).get('alunos').value()
+            
+            aluno.push({ aluno: this.nome })
 
-        db.get('ofertas').find({ id: idOferta }).assign({ alunos: aluno }).write()
-
+            db.get('ofertas').find({ id: idOferta }).assign({ alunos: aluno }).write()
+        }
         return 1
     }
 
@@ -66,8 +67,25 @@ module.exports = class Aluno extends IAluno{
        return false;
     }
 
-    deferirDisciplina() {
-        
+    deferirDisciplina(idOferta) {
+        var alunos = db.get('ofertas').find({ id : idOferta}).get('alunos').value()
+        numeroAlunos = Object.keys(alunos).length
+        var menor = this.ira
+        var idMenor
+        let vagas = db.get('ofertas').find({id: idOferta}).get('vagas').value()
+        if(vagas <= numeroAlunos) {
+            for(var i = 0; i < numeroAlunos; i++) {
+                if(alunos[i].ira < menor) {
+                    menor = alunos[i].ira
+                    idMenor = alunos[i].id
+                }
+            }
+            if(this.ira > menor) {
+                db.get('ofertas').find({ id: idOferta }).get('alunos').remove({id: idMenor})
+                this.inscreverOfertaDisciplina(idOferta)
+            }
+        }
+        return true
     }
 
 }
