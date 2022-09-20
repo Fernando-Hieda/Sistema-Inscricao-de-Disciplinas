@@ -4,14 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon --ignore 'db.json' index.js"
+    "dev": "nodemon --ignore 'db.json' index.js",
+    "start": "nodemon index.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "json-server": "0.13.0",
-    "lowdb": "^1.0.0"
+    "lowdb": "1.0.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.19"
