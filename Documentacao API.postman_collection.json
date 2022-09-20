@@ -1,0 +1,56 @@
+{
+	"info": {
+		"_postman_id": "e978e3bb-17a0-4ec8-9d30-e7e029776559",
+		"name": "Sistema de Inscrição de disciplinas",
+		"description": "# Introduction\nWhat does your API do?\n\n# Overview\nThings that the developers should know about\n\n# Authentication\nWhat is the preferred way of using the API?\n\n# Error Codes\nWhat errors and status codes can a user expect?\n\n# Rate limit\nIs there a limit to the number of requests a user can send?",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "11534292"
+	},
+	"item": [
+		{
+			"name": "localhost:3001/alunos",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:3001/alunos",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"alunos"
+					]
+				},
+				"description": "Lista os alunos cadastrados, indicando nome, ira, id, perfil, status de Matrícula, curso e disciplinas cadastradas de cada um"
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:3001/ofertas",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3001/ofertas",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"ofertas"
+					]
+				},
+				"description": "Lista as ofertas cadastrados, indicando a disciplina, id, professor, vagas, período, perfil e alunos cadastrados de cada um"
+			},
+			"response": []
+		}
+	]
+}
