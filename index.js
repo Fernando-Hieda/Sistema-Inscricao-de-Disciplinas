@@ -48,7 +48,7 @@ db.defaults(defaultData).write()
 app.use(bodyParser.json());
 app.use(cors())
 app.get('/', (req, res, next) => {
-    res.json({message: "Tudo ok por aqui!"});
+    res.json({message: "Tela Inicial, para começar acrescente /alunos ou /ofertas na url"});
 })
 
 // app.use(function(req, res, next) {
