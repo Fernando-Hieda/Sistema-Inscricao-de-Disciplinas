@@ -128,7 +128,7 @@ app.get('/defere_disciplina', (req, res, next) => {
 })
 
 const server = http.createServer(app); 
-server.listen(3001);
+server.listen(process.env.PORT || 3001);
 console.log("Servidor express escutando na porta 3001...")
 
 exports.db = db
