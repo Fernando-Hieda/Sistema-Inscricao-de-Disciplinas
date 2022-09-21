@@ -8,6 +8,7 @@ const FileSync = require('lowdb/adapters/FileSync')
 const Ativo = require("./Ativo")
 const adapter = new FileSync('db.json')
 const db = low(adapter)
+const http = require('http')
 
 module.exports = class Aluno extends IAluno{
     //propriedades e funções da classe Aluno
@@ -48,8 +49,27 @@ module.exports = class Aluno extends IAluno{
     }
 
     getGruposAcademicosInscritos() {
+        let url = 'http://147.182.136.29:3000/students/:id'
+        http.get(url,(res) => {
+            let body = "";
 
-    }
+            res.on("data", (chunk) => {
+                body += chunk;
+            });
+
+            res.on("end", () => {
+                try {
+                    let json = JSON.parse(body);
+                        return json.count
+                } catch (error) {
+                    console.error(error.message);
+                };
+            });
+        
+        }).on("error", (error) => {
+            console.error(error.message);
+        });
+     }
 
     getPendenciasBiblioteca() {
 
@@ -57,7 +77,7 @@ module.exports = class Aluno extends IAluno{
 
     checarRequerimentos() {
         if(this.statusMatricula = 'Ativo') {
-            if(this.getPendenciasBiblioteca() = 0) {
+            if(this.getPendenciasBiblioteca() == 0) {
                 if(this.getGruposAcademicosInscritos() <= 2) {
                     return true;
                 }
