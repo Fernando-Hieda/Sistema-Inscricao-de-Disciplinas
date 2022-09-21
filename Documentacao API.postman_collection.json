@@ -51,6 +51,25 @@
 				"description": "Lista as ofertas cadastrados, indicando a disciplina, id, professor, vagas, período, perfil e alunos cadastrados de cada um"
 			},
 			"response": []
+		},
+		{
+			"name": "localhost:3001/alunos/:id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3001/alunos/:id",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"alunos/:id"
+					]
+				},
+				"description": "Lista quantas disciplinas e quais disciplinas que um aluno está inscrito com um id mandado pela url"
+			},
+			"response": []
 		}
 	]
 }
