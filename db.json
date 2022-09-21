@@ -6,13 +6,38 @@
       "id": 123,
       "perfil": 2019,
       "statusMatricula": "Ativo",
-      "curso": "Mat",
+      "curso": "Matematica",
+      "disciplinas": [
+        {
+          "oferta": "Cálculo 1"
+        },
+        {
+          "oferta": "Física 1"
+        }
+      ]
+    },
+    {
+      "nome": "Pedro",
+      "ira": 8000,
+      "id": 456,
+      "perfil": 2020,
+      "statusMatricula": "Ativo",
+      "curso": "Fisica",
+      "disciplinas": []
+    },
+    {
+      "nome": "João",
+      "ira": 9000,
+      "id": 789,
+      "perfil": 2021,
+      "statusMatricula": "Ativo",
+      "curso": "Psicologia",
       "disciplinas": []
     }
   ],
   "ofertas": [
     {
-      "disciplina": "Mat",
+      "disciplina": "Cálculo 1",
       "id": 1,
       "professor": "Laura",
       "vagas": 15,
@@ -26,11 +51,61 @@
             "id": 123,
             "perfil": 2019,
             "statusMatricula": "Ativo",
-            "curso": "Mat",
-            "disciplinas": []
+            "curso": "Matematica",
+            "disciplinas": [
+              {
+                "oferta": "Cálculo 1"
+              },
+              {
+                "oferta": "Física 1"
+              }
+            ]
           }
         }
       ]
+    },
+    {
+      "disciplina": "Física 1",
+      "id": 2,
+      "professor": "Jorge",
+      "vagas": 10,
+      "periodo": "2019/1",
+      "perfil": 2018,
+      "alunos": [
+        {
+          "aluno": {
+            "nome": "Matheus",
+            "ira": 11000,
+            "id": 123,
+            "perfil": 2019,
+            "statusMatricula": "Ativo",
+            "curso": "Matematica",
+            "disciplinas": [
+              {
+                "oferta": "Cálculo 1"
+              },
+              {
+                "oferta": "Física 1"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "disciplina": "Química 1",
+      "id": 3,
+      "professor": "Rodrigo",
+      "vagas": 20,
+      "periodo": "2019/1",
+      "perfil": 2019,
+      "alunos": []
+    }
+  ],
+  "periodos": [
+    {
+      "semestre": "2019/1",
+      "ofertas": []
     }
   ]
 }

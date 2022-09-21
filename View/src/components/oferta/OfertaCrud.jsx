@@ -177,8 +177,8 @@ export default class OfertaCrud extends Component {
     renderRows() {
         return this.state.list.map(oferta => {
             let nomes = []
-            for(let i = 0; oferta.alunos.length; i ++) {
-                nomes[i] = oferta.alunos[i].nome
+            for(let i = 0; i < oferta.alunos.length; i ++) {
+                nomes[i] = oferta.alunos[i].aluno.nome
             }
             return (
                 <tr key={oferta.id}>

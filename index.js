@@ -3,6 +3,7 @@ const http = require('http');
 const express = require('express'); 
 const app = express(); 
 const bodyParser = require('body-parser');
+const cors = require('cors');
 
 const low= require('lowdb')
 const FileSync = require('lowdb/adapters/FileSync')
@@ -18,14 +19,14 @@ const defaultData = {
             "id" : 123,
             "perfil": 2019,
             "statusMatricula": "Ativo",
-            "curso": "Mat",
+            "curso": "Matematica",
             "disciplinas": [
             ]
         }
     ],
     "ofertas": [
         {
-            "disciplina": "Mat",
+            "disciplina": "Calculo 1",
             "professor": "Laura",
             "id": 1,
             "vagas": 15,
@@ -34,21 +35,27 @@ const defaultData = {
             "alunos": [
             ]
         }
+    ],
+    "periodos": [
+        {
+          "semestre": "2019/1",
+          "ofertas": []
+        }
     ]
 }
 db.defaults(defaultData).write()
 
 app.use(bodyParser.json());
-
+app.use(cors())
 app.get('/', (req, res, next) => {
-    res.json({message: "Tudo ok por aqui!"});
+    res.json({message: "Tela Inicial, para começar acrescente /alunos ou /ofertas na url"});
 })
 
-app.use(function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    next();
-});
+// app.use(function(req, res, next) {
+//     res.header("Access-Control-Allow-Origin", "*");
+//     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+//     next();
+// });
 
 const ControllerAluno = require("./Controllers/AlunoController")
 const ControleAluno = new ControllerAluno
@@ -68,6 +75,14 @@ app.get('/alunos', (req, res, next) => {
     res.send(alunos)
 })
 
+app.get('/alunos/:id', (req, res, next) => {
+    id = req.params.id
+    id = Number(id)
+    
+    const alunos = db.get("alunos").find({ id: id }).value()
+    
+    res.send(alunos)
+})
 
 app.post('/alunos', (req, res, next) => {
     console.log("Postou um aluno!");
@@ -94,19 +109,26 @@ app.get('/inscricao_disciplina', (req, res, next) => {
     statusMatricula = aluno.statusMatricula
     curso = aluno.curso
 
-    aluno1 = ControleAluno.criaAluno(aluno, ira, id, perfil, statusMatricula, curso)
-    aluno1.inscreverOfertaDisciplina(1)
+    // aluno1 = ControleAluno.criaAluno(aluno, ira, id, perfil, statusMatricula, curso)
+    // aluno1.inscreverOfertaDisciplina(1)
+    // aluno1.inscreverOfertaDisciplina(2)
 
-    res.send(aluno)
+    // disciplina1 = ControleOferta.criaOferta("Cálculo 1", 1, "Laura", 15, "2019/1", 2019)
+    // disciplina1.inscreverAlunoOferta(123)
+
+    // disciplina1 = ControleOferta.criaOferta("Física 1", 2, "Jorge", 10, "2019/1", 2018)
+    // disciplina1.inscreverAlunoOferta(123)
+    res.send(aluno1.getAllDisciplinasInscritas(123))
 })
 
 app.get('/defere_disciplina', (req, res, next) => { 
-    aluno1 = ControleAluno.criaAluno("Matheus",11000, 123, 2019, "Ativo", "Mat")
+    aluno1 = ControleAluno.criaAluno("Pedro", 8000, 456, 2020, "Ativo", "Fisica")
     aluno1.defereOfertaDisciplina(1)
+    
 })
 
 const server = http.createServer(app); 
-server.listen(3001);
+server.listen(process.env.PORT || 3001);
 console.log("Servidor express escutando na porta 3001...")
 
 exports.db = db

@@ -1,10 +1,11 @@
 var IAluno = require("./InterfaceAluno")
 var Oferta = require("./Oferta")
-var Curso = require("../Curso")
+var State = require("./State")
 const oferta = new Oferta
 
 const low= require('lowdb')
 const FileSync = require('lowdb/adapters/FileSync')
+const Ativo = require("./Ativo")
 const adapter = new FileSync('db.json')
 const db = low(adapter)
 
@@ -19,36 +20,45 @@ module.exports = class Aluno extends IAluno{
         this.statusMatricula = statusMatricula
         this.curso = curso
         this.disciplinasInscritas = []
+        this.currentState = State
+        this.previousState = State
     }
 
     newOferta(disciplina, id, professor, vagas, periodo, perfil) {
-        let o = new Oferta(disciplina, professor, vagas, periodo, perfil)
+        let o = new Oferta(disciplina, id, professor, vagas, periodo, perfil)
         this.disciplinasInscritas.push(o.disciplina)
         return o
     }
 
-    inscreverOfertaDisciplina(id) {
-        let aluno = db.get('ofertas').find({ id: 1 }).get('alunos').value()
-        
-        aluno.push({ aluno: this.nome })
+    inscreverOfertaDisciplina(idOferta) {
+        if (this.checarRequerimentos()) {
+            let aluno = db.get('ofertas').find({ id: idOferta }).get('alunos').value()
+            
+            aluno.push({ aluno: this.nome })
 
-        db.get('ofertas').find({ id: 1 }).assign({ alunos: aluno }).write()
-
+            db.get('ofertas').find({ id: idOferta }).assign({ alunos: aluno }).write()
+        }
         return 1
     }
 
-    getAllDisciplinasInscritas() {
-        return this.disciplinasInscritas
+    getAllDisciplinasInscritas(id) {
+        let disciplinas = db.get('alunos').find({id: id}).get('disciplinas').value()
+
+        return disciplinas
     }
 
     getGruposAcademicosInscritos() {
 
     }
 
+    getPendenciasBiblioteca() {
+
+    }
+
     checarRequerimentos() {
         if(this.statusMatricula = 'Ativo') {
-            if(this.pendenciasBiblioteca = 0) {
-                if(this.gruposAcademicosInscritos <= 2) {
+            if(this.getPendenciasBiblioteca() = 0) {
+                if(this.getGruposAcademicosInscritos() <= 2) {
                     return true;
                 }
                 console.log("Erro: No maximo 2 grupos academicos para se inscrever em uma oferta")
@@ -61,18 +71,54 @@ module.exports = class Aluno extends IAluno{
        return false;
     }
 
-    inscreverDisciplina(id) {
-          // if(this.checarRequerimentos() = true) {
-            //    if(oferta.perfil == this.perfil) {
-                    //defere
-
-              //  }
-                //concorrer usando o ira
-          // }
+    deferirDisciplina(idOferta) {
+        var alunos = db.get('ofertas').find({ id : idOferta}).get('alunos').value()
+        numeroAlunos = Object.keys(alunos).length
+        var menor = this.ira
+        var idMenor
+        let vagas = db.get('ofertas').find({id: idOferta}).get('vagas').value()
+        if(vagas <= numeroAlunos) {
+            for(var i = 0; i < numeroAlunos; i++) {
+                if(alunos[i].ira < menor) {
+                    menor = alunos[i].ira
+                    idMenor = alunos[i].id
+                }
+            }
+            if(this.ira > menor) {
+                db.get('ofertas').find({ id: idOferta }).get('alunos').remove({id: idMenor})
+                this.inscreverOfertaDisciplina(idOferta)
+            }
+        }
+        return true
     }
 
-    deferirDisciplina() {
-        
+    Aluno(){
+        this.currentState = new Ativo()
+        this.previousState = null
+    }
+
+    ativarMatricula(){
+        this.currentState.ativarMatricula(this)
+    }
+
+    trancarMatricula(){
+        this.currentState.trancarMatricula(this)
+    }
+
+    suspenderMatricula(){
+        this.currentState.suspenderMatricula(this)
+    }
+
+    afastarAluno(){
+        this.currentState.afastarMatricula(this)
+    }
+
+    terminarCurso(){
+        this.currentState.terminarCurso(this)
+    }
+
+    jubilarAluno(){
+        this.currentState.jubilarAluno(this)
     }
 
 }

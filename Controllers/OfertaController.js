@@ -9,6 +9,10 @@ module.exports = class Controller {
     criaOferta(disciplina, id, professor, vagas, periodo, perfil) {
         return this.FOferta.criaOferta(disciplina, professor, vagas, periodo, perfil)
     }
+
+    inscreverAlunoOferta(idAluno) {
+        return this.IOferta.inscreverAlunoOferta(idAluno)
+    }
     
     alunosDeferidos(){
         return this.IOferta.alunosDeferidos()

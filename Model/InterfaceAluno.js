@@ -6,8 +6,8 @@ module.exports = class IAluno {
         this._WARNING('newOferta(disciplina, professor, vagas, periodo, perfil)')
     }
 
-    inscreverOfertaDisciplina(id) {
-        this._WARNING('inscreverOfertaDisciplina(id)')
+    inscreverOfertaDisciplina(idOferta) {
+        this._WARNING('inscreverOfertaDisciplina(idOferta)')
     }
     
     getAllDisciplinasInscritas(id){
