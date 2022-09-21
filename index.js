@@ -50,12 +50,6 @@ app.get('/', (req, res, next) => {
     res.json({message: "Tela Inicial, para começar acrescente /alunos ou /ofertas na url"});
 })
 
-// app.use(function(req, res, next) {
-//     res.header("Access-Control-Allow-Origin", "*");
-//     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-//     next();
-// });
-
 const ControllerAluno = require("./Controllers/AlunoController")
 const ControleAluno = new ControllerAluno
 const ControllerOferta= require("./Controllers/OfertaController")
@@ -101,7 +95,10 @@ app.post('/alunos', (req, res, next) => {
 })
 
 app.get('/inscricao_disciplina', (req, res, next) => {
-    let aluno = db.get('alunos').find({ id: 123 }).value()
+    id = req.params.id
+    id = Number(id)
+
+    let aluno = db.get('alunos').find({ id: id }).value()
     
     nome = aluno.name
     ira = aluno.ira
@@ -109,6 +106,7 @@ app.get('/inscricao_disciplina', (req, res, next) => {
     perfil = aluno.perfil
     statusMatricula = aluno.statusMatricula
     curso = aluno.curso
+
 
     // aluno1 = ControleAluno.criaAluno(aluno, ira, id, perfil, statusMatricula, curso)
     // aluno1.inscreverOfertaDisciplina(1)
@@ -119,13 +117,29 @@ app.get('/inscricao_disciplina', (req, res, next) => {
 
     // disciplina1 = ControleOferta.criaOferta("Física 1", 2, "Jorge", 10, "2019/1", 2018)
     // disciplina1.inscreverAlunoOferta(123)
-    res.send(aluno1.getAllDisciplinasInscritas(123))
+    res.send(aluno.getAllDisciplinasInscritas(id))
 })
 
 app.get('/defere_disciplina', (req, res, next) => { 
     aluno1 = ControleAluno.criaAluno("Pedro", 8000, 456, 2020, "Ativo", "Fisica")
     aluno1.defereOfertaDisciplina(1)
     
+})
+
+app.get('/lista_disciplina/:periodo', (req, res, next) => { 
+
+    periodo = req.params.periodo
+    periodo = Number(periodo)
+    const ofertas = db.get("ofertas").value()
+
+    numeroOfertas = Object.keys(ofertas).length 
+
+    for (var i = 0; i < numeroOfertas; i++) {
+        if(ofertas[i].periodo == periodo)
+            disciplinasPerfil.push(ofertas[i])
+    }
+
+    res.send(disciplinasPerfil)
 })
 
 const server = http.createServer(app); 
