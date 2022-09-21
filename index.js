@@ -10,7 +10,6 @@ const FileSync = require('lowdb/adapters/FileSync')
 const adapter = new FileSync('db.json')
 const db = low(adapter)
 
-
 const defaultData = {
     "alunos": [
         {
@@ -79,9 +78,11 @@ app.get('/alunos/:id', (req, res, next) => {
     id = req.params.id
     id = Number(id)
     
-    const alunos = db.get("alunos").find({ id: id }).value()
+    const disciplinas = db.get("alunos").find({ id: id }).get('disciplinas').value()
+
+    numeroDisciplinas = Object.keys(disciplinas).length 
     
-    res.send(alunos)
+    res.send({disciplinas, numeroDisciplinas })
 })
 
 app.post('/alunos', (req, res, next) => {
