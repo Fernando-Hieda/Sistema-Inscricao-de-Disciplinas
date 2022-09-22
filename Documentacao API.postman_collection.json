@@ -70,6 +70,25 @@
 				"description": "Lista quantas disciplinas e quais disciplinas que um aluno está inscrito com um id mandado pela url"
 			},
 			"response": []
+		},
+		{
+			"name": "localhost:3001/lista_disciplina/:periodo",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3001/lista_disciplina/:periodo",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"lista_disciplina/:periodo"
+					]
+				},
+				"description": "A partir de um período passado na url, lista as ofertas desse período"
+			},
+			"response": []
 		}
 	]
 }

@@ -41,7 +41,7 @@
       "id": 1,
       "professor": "Laura",
       "vagas": 15,
-      "periodo": "2019/1",
+      "periodo": "2019-1",
       "perfil": 2019,
       "alunos": [
         {
@@ -69,7 +69,7 @@
       "id": 2,
       "professor": "Jorge",
       "vagas": 10,
-      "periodo": "2019/1",
+      "periodo": "2019-1",
       "perfil": 2018,
       "alunos": [
         {
@@ -97,7 +97,7 @@
       "id": 3,
       "professor": "Rodrigo",
       "vagas": 20,
-      "periodo": "2019/1",
+      "periodo": "2019-1",
       "perfil": 2019,
       "alunos": []
     }

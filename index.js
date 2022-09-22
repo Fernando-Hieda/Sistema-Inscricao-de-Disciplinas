@@ -129,16 +129,15 @@ app.get('/defere_disciplina', (req, res, next) => {
 app.get('/lista_disciplina/:periodo', (req, res, next) => { 
 
     periodo = req.params.periodo
-    periodo = Number(periodo)
     const ofertas = db.get("ofertas").value()
 
     numeroOfertas = Object.keys(ofertas).length 
-
+    var disciplinasPerfil = []
     for (var i = 0; i < numeroOfertas; i++) {
         if(ofertas[i].periodo == periodo)
             disciplinasPerfil.push(ofertas[i])
     }
-
+    
     res.send(disciplinasPerfil)
 })
 
