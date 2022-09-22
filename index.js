@@ -9,6 +9,7 @@ const low= require('lowdb')
 const FileSync = require('lowdb/adapters/FileSync')
 const adapter = new FileSync('db.json')
 const db = low(adapter)
+const http = require('http')
 
 const defaultData = {
     "alunos": [
@@ -139,6 +140,30 @@ app.get('/lista_disciplina/:periodo', (req, res, next) => {
     }
     
     res.send(disciplinasPerfil)
+})
+
+app.get('/lista_grupos_academicos/:id', (req, res, next) => {
+    //url do sistema do grupo acadêmico
+    let url = 'http://147.182.136.29:3000/students/:id'
+        http.get(url,(res) => {
+            let body = "";
+
+            res.on("data", (chunk) => {
+                body += chunk;
+            });
+
+            res.on("end", () => {
+                try {
+                    let json = JSON.parse(body);
+                        res.send(json.data)
+                } catch (error) {
+                    console.error(error.message);
+                };
+            });
+        
+        }).on("error", (error) => {
+            console.error(error.message);
+        });
 })
 
 const server = http.createServer(app); 
