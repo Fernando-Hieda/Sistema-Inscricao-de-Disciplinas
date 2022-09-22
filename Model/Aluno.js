@@ -49,6 +49,7 @@ module.exports = class Aluno extends IAluno{
     }
 
     getGruposAcademicosInscritos() {
+        //url do sistema do grupo acadêmico
         let url = 'http://147.182.136.29:3000/students/:id'
         http.get(url,(res) => {
             let body = "";
