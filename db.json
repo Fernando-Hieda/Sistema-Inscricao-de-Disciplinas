@@ -13,6 +13,9 @@
         },
         {
           "oferta": "Física 1"
+        },
+        {
+          "oferta": "Química 1"
         }
       ]
     },
@@ -23,7 +26,14 @@
       "perfil": 2020,
       "statusMatricula": "Ativo",
       "curso": "Fisica",
-      "disciplinas": []
+      "disciplinas": [
+        {
+          "oferta": "Cálculo 1"
+        },
+        {
+          "oferta": "Física 1"
+        }
+      ]
     },
     {
       "nome": "João",
@@ -58,6 +68,27 @@
               },
               {
                 "oferta": "Física 1"
+              },
+              {
+                "oferta": "Química 1"
+              }
+            ]
+          }
+        },
+        {
+          "aluno": {
+            "nome": "Pedro",
+            "ira": 8000,
+            "id": 784687,
+            "perfil": 2020,
+            "statusMatricula": "Ativo",
+            "curso": "Fisica",
+            "disciplinas": [
+              {
+                "oferta": "Cálculo 1"
+              },
+              {
+                "oferta": "Física 1"
               }
             ]
           }
@@ -86,6 +117,27 @@
               },
               {
                 "oferta": "Física 1"
+              },
+              {
+                "oferta": "Química 1"
+              }
+            ]
+          }
+        },
+        {
+          "aluno": {
+            "nome": "Pedro",
+            "ira": 8000,
+            "id": 784687,
+            "perfil": 2020,
+            "statusMatricula": "Ativo",
+            "curso": "Fisica",
+            "disciplinas": [
+              {
+                "oferta": "Cálculo 1"
+              },
+              {
+                "oferta": "Física 1"
               }
             ]
           }
@@ -99,7 +151,29 @@
       "vagas": 20,
       "periodo": "2019-1",
       "perfil": 2019,
-      "alunos": []
+      "alunos": [
+        {
+          "aluno": {
+            "nome": "Matheus",
+            "ira": 11000,
+            "id": 123,
+            "perfil": 2019,
+            "statusMatricula": "Ativo",
+            "curso": "Matematica",
+            "disciplinas": [
+              {
+                "oferta": "Cálculo 1"
+              },
+              {
+                "oferta": "Física 1"
+              },
+              {
+                "oferta": "Química 1"
+              }
+            ]
+          }
+        }
+      ]
     }
   ],
   "periodos": [
