@@ -94,7 +94,7 @@ app.post('/alunos', (req, res, next) => {
     res.json(aluno)
 })
 
-app.get('/inscricao_disciplina', (req, res, next) => {
+app.get('/inscricao_disciplina/:id', (req, res, next) => {
     id = req.params.id
     id = Number(id)
 
@@ -117,7 +117,7 @@ app.get('/inscricao_disciplina', (req, res, next) => {
 
     // disciplina1 = ControleOferta.criaOferta("Física 1", 2, "Jorge", 10, "2019/1", 2018)
     // disciplina1.inscreverAlunoOferta(123)
-    res.send(aluno.getAllDisciplinasInscritas(id))
+    res.send(aluno1)
 })
 
 app.get('/defere_disciplina', (req, res, next) => { 
