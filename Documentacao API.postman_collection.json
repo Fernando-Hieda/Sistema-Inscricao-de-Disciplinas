@@ -89,6 +89,25 @@
 				"description": "A partir de um período passado na url, lista as ofertas desse período"
 			},
 			"response": []
+		},
+		{
+			"name": "localhost:300/lista_grupos_academicos/:id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3001/lista_grupos_academicos/:id",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"lista_grupos_academicos/:id"
+					]
+				},
+				"description": "A partir de um id de aluno passado na url, lista os grupos academicos desse aluno"
+			},
+			"response": []
 		}
 	]
 }
