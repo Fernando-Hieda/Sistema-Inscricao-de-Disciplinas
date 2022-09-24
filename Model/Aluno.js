@@ -31,7 +31,16 @@ module.exports = class Aluno extends IAluno{
         return o
     }
 
-    inscreverOfertaDisciplina(idOferta) {
+    inscreverOfertaDisciplina(idAluno, idOferta) {
+        let aluno = db.get('alunos').find({ id: id }).value()
+
+        this.nome = aluno.name
+        this.ira = aluno.ira
+        this.id = aluno.id
+        this.perfil = aluno.perfil
+        this.statusMatricula = aluno.statusMatricula
+        this.curso = aluno.curso
+
         if (this.checarRequerimentos()) {
             let aluno = db.get('ofertas').find({ id: idOferta }).get('alunos').value()
             
@@ -42,13 +51,7 @@ module.exports = class Aluno extends IAluno{
         return 1
     }
 
-    getAllDisciplinasInscritas(id) {
-        let disciplinas = db.get('alunos').find({id: id}).get('disciplinas').value()
-
-        return disciplinas
-    }
-
-    getGruposAcademicosInscritos() {
+    getNumeroGruposAcademicosInscritos() {
         //url do sistema do grupo acadêmico
         let url = 'http://147.182.136.29:3000/students/:id'
         http.get(url,(res) => {
@@ -73,13 +76,33 @@ module.exports = class Aluno extends IAluno{
      }
 
     getPendenciasBiblioteca() {
+        //url do sistema da biblioteca
+        let url = 'http://pooa-sist-biblioteca.herokuapp.com/api/usuario/:id/pendencias'
+        http.get(url,(res) => {
+            let body = "";
 
+            res.on("data", (chunk) => {
+                body += chunk;
+            });
+
+            res.on("end", () => {
+                try {
+                    let json = JSON.parse(body);
+                        return json.pendencias
+                } catch (error) {
+                    console.error(error.message);
+                };
+            });
+        
+        }).on("error", (error) => {
+            console.error(error.message);
+        });
     }
 
     checarRequerimentos() {
         if(this.statusMatricula = 'Ativo') {
             if(this.getPendenciasBiblioteca() == 0) {
-                if(this.getGruposAcademicosInscritos() <= 2) {
+                if(this.getNumeroGruposAcademicosInscritos() <= 2) {
                     return true;
                 }
                 console.log("Erro: No maximo 2 grupos academicos para se inscrever em uma oferta")
@@ -113,33 +136,69 @@ module.exports = class Aluno extends IAluno{
         return true
     }
 
-    Aluno(){
+    Aluno() {
         this.currentState = new Ativo()
         this.previousState = null
     }
 
-    ativarMatricula(){
+    ativarMatricula() {
         this.currentState.ativarMatricula(this)
     }
 
-    trancarMatricula(){
+    trancarMatricula() {
         this.currentState.trancarMatricula(this)
     }
 
-    suspenderMatricula(){
+    suspenderMatricula() {
         this.currentState.suspenderMatricula(this)
     }
 
-    afastarAluno(){
+    afastarAluno() {
         this.currentState.afastarMatricula(this)
     }
 
-    terminarCurso(){
+    terminarCurso() {
         this.currentState.terminarCurso(this)
     }
 
-    jubilarAluno(){
+    jubilarAluno() {
         this.currentState.jubilarAluno(this)
     }
 
+    listarAlunos() {
+        const alunos = db.get("alunos").value()
+        return alunos
+    }
+
+    listarDisciplinasInscritas(id) {
+        const disciplinas = db.get("alunos").find({ id: id }).get('disciplinas').value()
+
+        const numeroDisciplinas = Object.keys(disciplinas).length
+
+        return {disciplinas, numeroDisciplinas}
+    }
+
+    listarGruposAcademicos(id) {
+        //url do sistema do grupo acadêmico
+    let url = 'http://147.182.136.29:3000/students/:id'
+        http.get(url,(res) => {
+            let body = "";
+
+            res.on("data", (chunk) => {
+                body += chunk;
+            });
+
+            res.on("end", () => {
+                try {
+                    let json = JSON.parse(body);
+                        return json.data
+                } catch (error) {
+                    console.error(error.message);
+                };
+            });
+        
+        }).on("error", (error) => {
+            console.error(error.message);
+        });
+    }
 }

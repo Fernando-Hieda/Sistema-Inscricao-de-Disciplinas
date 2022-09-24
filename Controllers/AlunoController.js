@@ -14,11 +14,19 @@ module.exports = class ControllerAluno extends IAluno{
         return this.IAluno.newOferta(disciplina, professor, vagas, periodo, perfil)
     }
 
-    inscreverOfertaDisciplina(idOferta) {
+    inscreverOfertaDisciplina(idAluno, idOferta) {
         return this.IAluno.inscreverOfertaDisciplina(id)
     }
 
-    getAllDisciplinasInscritas(id){
-        return this.IAluno.getAllDisciplinasInscritas(id)
+    listarAlunos(){
+        return this.IAluno.listarAlunos()
+    }
+
+    listarDisciplinasInscritas(id) {
+        return this.IAluno.listarDisciplinasInscritas(id)
+    }
+
+    listarGruposAcademicos(id) {
+        return this.IAluno.listarGruposAcademicos(id)
     }
 }

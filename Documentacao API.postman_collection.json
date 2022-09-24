@@ -2,7 +2,7 @@
 	"info": {
 		"_postman_id": "e978e3bb-17a0-4ec8-9d30-e7e029776559",
 		"name": "Sistema de Inscrição de disciplinas",
-		"description": "# Introduction\nWhat does your API do?\n\n# Overview\nThings that the developers should know about\n\n# Authentication\nWhat is the preferred way of using the API?\n\n# Error Codes\nWhat errors and status codes can a user expect?\n\n# Rate limit\nIs there a limit to the number of requests a user can send?",
+		"description": "# Introduction\nSistema para inscrição de Disciplinas\n\n# Overview\nAs rotas disponíveis estarão descritas nesse documento\n\n# Authentication\n\n\n# Error Codes\nWhat errors and status codes can a user expect?\n\n# Rate limit\nIs there a limit to the number of requests a user can send?",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "11534292"
 	},

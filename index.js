@@ -53,30 +53,29 @@ app.get('/', (req, res, next) => {
 const ControllerAluno = require("./Controllers/AlunoController")
 const ControleAluno = new ControllerAluno
 const ControllerOferta= require("./Controllers/OfertaController")
-const ControleOferta= new ControllerOferta
+const ControleOferta = new ControllerOferta
+
+disciplina1 = ControleOferta.criaOferta("Cálculo 1", 1, "Laura", 15, "2019/1", 2019)
+aluno1 = ControleAluno.criaAluno('Pedro', 8000, 784687, 2020, "Ativo", "Física")
 
 app.get('/ofertas', (req, res, next) => { 
-    const ofertas = db.get("ofertas").value()
-    
+    ofertas = disciplina1.listarOfertas()
     res.send(ofertas)
 })
 
 
 app.get('/alunos', (req, res, next) => {
-    const alunos = db.get("alunos").value()
-    
+    alunos = aluno1.listarAlunos()
     res.send(alunos)
 })
 
 app.get('/alunos/:id', (req, res, next) => {
     id = req.params.id
     id = Number(id)
-    
-    const disciplinas = db.get("alunos").find({ id: id }).get('disciplinas').value()
 
-    numeroDisciplinas = Object.keys(disciplinas).length 
-    
-    res.send({disciplinas, numeroDisciplinas })
+    json = aluno1.listarDisciplinasInscritas(id)
+
+    res.send(json)
 })
 
 app.post('/alunos', (req, res, next) => {
@@ -94,26 +93,17 @@ app.post('/alunos', (req, res, next) => {
     res.json(aluno)
 })
 
-app.get('/inscricao_disciplina/:id', (req, res, next) => {
-    id = req.params.id
-    id = Number(id)
+app.get('/inscricao_disciplina/:idAluno/:idOferta', (req, res, next) => {
+    idAluno = req.params.idAluno
+    idAluno = Number(idAluno)
 
-    let aluno = db.get('alunos').find({ id: id }).value()
-    
-    nome = aluno.name
-    ira = aluno.ira
-    id = aluno.id
-    perfil = aluno.perfil
-    statusMatricula = aluno.statusMatricula
-    curso = aluno.curso
+    idOferta = req.params.idOferta
+    idOferta = Number(idOferta)
 
+    aluno1.inscreverOfertaDisciplina(idAluno, idOferta)
 
-    // aluno1 = ControleAluno.criaAluno(aluno, ira, id, perfil, statusMatricula, curso)
-    // aluno1.inscreverOfertaDisciplina(1)
-    // aluno1.inscreverOfertaDisciplina(2)
-
-    // disciplina1 = ControleOferta.criaOferta("Cálculo 1", 1, "Laura", 15, "2019/1", 2019)
-    // disciplina1.inscreverAlunoOferta(123)
+    //disciplina1 = ControleOferta.criaOferta("Cálculo 1", 1, "Laura", 15, "2019/1", 2019)
+    //disciplina1.inscreverAlunoOferta(123)
 
     // disciplina1 = ControleOferta.criaOferta("Física 1", 2, "Jorge", 10, "2019/1", 2018)
     // disciplina1.inscreverAlunoOferta(123)
@@ -123,46 +113,23 @@ app.get('/inscricao_disciplina/:id', (req, res, next) => {
 app.get('/defere_disciplina', (req, res, next) => { 
     aluno1 = ControleAluno.criaAluno("Pedro", 8000, 456, 2020, "Ativo", "Fisica")
     aluno1.defereOfertaDisciplina(1)
-    
 })
 
 app.get('/lista_disciplina/:periodo', (req, res, next) => { 
-
     periodo = req.params.periodo
-    const ofertas = db.get("ofertas").value()
 
-    numeroOfertas = Object.keys(ofertas).length 
-    var disciplinasPerfil = []
-    for (var i = 0; i < numeroOfertas; i++) {
-        if(ofertas[i].periodo == periodo)
-            disciplinasPerfil.push(ofertas[i])
-    }
+    ofertas = disciplina1.listarOfertasDePeriodo(periodo)
     
-    res.send(disciplinasPerfil)
+    res.send(ofertas)
 })
 
 app.get('/lista_grupos_academicos/:id', (req, res, next) => {
-    //url do sistema do grupo acadêmico
-    let url = 'http://147.182.136.29:3000/students/:id'
-        http.get(url,(res) => {
-            let body = "";
-
-            res.on("data", (chunk) => {
-                body += chunk;
-            });
-
-            res.on("end", () => {
-                try {
-                    let json = JSON.parse(body);
-                        res.send(json.data)
-                } catch (error) {
-                    console.error(error.message);
-                };
-            });
-        
-        }).on("error", (error) => {
-            console.error(error.message);
-        });
+    id = req.params.id
+    id = Number(id)
+    
+    json = aluno1.listarGruposAcademicos(id)
+    
+    res.send(json)
 })
 
 const server = http.createServer(app); 

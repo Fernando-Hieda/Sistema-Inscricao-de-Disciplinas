@@ -17,4 +17,12 @@ module.exports = class Controller {
     alunosDeferidos(){
         return this.IOferta.alunosDeferidos()
     }
+
+    listarOfertas(){
+        return this.IOferta.listarOfertas()
+    }
+
+    listarOfertasDePeriodo(periodo){
+        return this.IOferta.listarOfertasDePeriodo()
+    }
 }

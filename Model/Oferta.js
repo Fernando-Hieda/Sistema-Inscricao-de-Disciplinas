@@ -49,6 +49,24 @@ module.exports = class Oferta extends IOferta {
         return 1
     }
 
+    listarOfertas() {
+        const ofertas = db.get("ofertas").value()
+        return ofertas
+    }
+
+    listarOfertasDePeriodo(periodo) {
+        const ofertas = db.get("ofertas").value()
+
+        numeroOfertas = Object.keys(ofertas).length 
+        var disciplinasPerfil = []
+        for (var i = 0; i < numeroOfertas; i++) {
+            if(ofertas[i].periodo == periodo)
+                disciplinasPerfil.push(ofertas[i])
+        }
+        
+        return disciplinasPerfil
+    }
+
     getAlunosDeferidos(id) {
         let alunos = db.get('ofertas').find({id: id}).get('alunos').value()
 
