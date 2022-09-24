@@ -57,7 +57,7 @@ module.exports = class Oferta extends IOferta {
     listarOfertasDePeriodo(periodo) {
         const ofertas = db.get("ofertas").value()
 
-        numeroOfertas = Object.keys(ofertas).length 
+        const numeroOfertas = Object.keys(ofertas).length 
         var disciplinasPerfil = []
         for (var i = 0; i < numeroOfertas; i++) {
             if(ofertas[i].periodo == periodo)
